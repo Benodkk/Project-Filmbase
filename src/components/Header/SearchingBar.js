@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import db from "./database/movie-database/db.json";
+import db from "./database/db.json";
 
 let allData = db.films
   .concat(db.tvSeries)
@@ -7,7 +7,7 @@ let allData = db.films
   .concat(db.writers)
   .concat(db.directors);
 
-function App() {
+function SearchingBar() {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -27,15 +27,14 @@ function App() {
 
     // Delete elemets, from previous result if they are in new matching result
     const updatedResults = results.filter(
-      (result) => !newResults.some((nr) => nr.item.id === result.item.id)
+      (oldResult) =>
+        !newResults.some((newResult) => newResult.item.id === oldResult.item.id)
     );
 
-    // Add elements from newResults to array updatedResults
     setResults([...newResults, ...updatedResults].slice(0, 6));
-    console.log(results);
   }
   return (
-    <div className="App">
+    <div className="SearchingBar">
       <input
         type="text"
         value={query}
@@ -49,4 +48,4 @@ function App() {
   );
 }
 
-export default App;
+export default SearchingBar;

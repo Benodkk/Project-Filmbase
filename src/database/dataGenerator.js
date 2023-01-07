@@ -114,6 +114,7 @@ for (let i = 1; i <= 600; i++) {
 }
 
 // FILMS AND TV SERIES
+// trending means number of views in last week
 
 for (let i = 1; i <= 1000; i++) {
   let word = faker.random.words(2);
@@ -130,6 +131,7 @@ for (let i = 1; i <= 1000; i++) {
     description: casual.sentences(2),
     rating: Math.floor(casual.double(100, 1000)) / 100,
     numberOfRatings: casual.integer(1000, 100000),
+    trending: casual.integer(1000, 10000),
     genre: genre[Math.floor(Math.random() * genre.length)],
     realsed: faker.date.between(
       "1980-01-01T00:00:00.000Z",
@@ -156,6 +158,7 @@ for (let i = 1; i <= 1000; i++) {
     description: casual.sentences(2),
     rating: Math.floor(casual.double(100, 1000)) / 100,
     numberOfRatings: casual.integer(1000, 100000),
+    trending: casual.integer(1000, 10000),
     genre: genre[Math.floor(Math.random() * genre.length)],
     realsed: faker.date.between(
       "1980-01-01T00:00:00.000Z",
