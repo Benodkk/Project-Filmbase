@@ -7,10 +7,10 @@ let allData = db.films;
 
 function TestComponent() {
   return (
-    <div className="TestComponent">
-      <MovieCard movie={allData[0]} />
-      <MovieCard movie={allData[1]} />
-      <MovieCard movie={allData[2]} />
+    <div className="TestComponent" style={{ margin: "50px" }}>
+      <MovieCard movie={allData[0]} cardWidth={12} />
+      <MovieCard movie={allData[1]} cardWidth={18} />
+      <MovieCard movie={allData[2]} cardWidth={18} />
     </div>
   );
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -13,6 +14,8 @@
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -20,8 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "node ./src/database/movie-database/dataGenerator.js > ./src/database/movie-database/db.json",
-    "server": "json-server --watch ./src/database/movie-database/db.json --port 3005"
+    "generate": "node ./src/database/dataGenerator.js > ./src/database/db.json",
+    "server": "json-server --watch ./src/database/db.json --port 3005"
   },
   "eslintConfig": {
     "extends": [

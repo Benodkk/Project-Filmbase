@@ -127,7 +127,7 @@ for (let i = 1; i <= 1000; i++) {
   database.films.push({
     id: `film${i}`,
     title: word.charAt(0).toUpperCase() + word.slice(1),
-    img: faker.image.image(396, 566, true),
+    img: faker.image.image(180, 256, true),
     description: casual.sentences(2),
     rating: Math.floor(casual.double(100, 1000)) / 100,
     numberOfRatings: casual.integer(1000, 100000),

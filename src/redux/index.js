@@ -1,4 +1,7 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
 
 const initialState = {
   movies: [],
@@ -27,9 +30,9 @@ function rateMovie(id, rate) {
 }
 export { addToWatchList, like, rateMovie };
 
-export function reducer(state = initialState, action) {
+function userReducer(state = initialState, action) {
   const movieIndex = state.movies.findIndex((movie) => movie.id === action.id);
-  const movie =
+  const newMovie =
     movieIndex === -1
       ? {
           id: action.id,
@@ -42,31 +45,50 @@ export function reducer(state = initialState, action) {
 
   switch (action.type) {
     case "likeMovie":
-      movie.like = !movie.like;
+      newMovie.like = !newMovie.like;
       break;
     case "addToWatchlist":
-      movie.toWatch = !movie.toWatch;
+      newMovie.toWatch = !newMovie.toWatch;
       break;
     case "rateMovie":
-      movie.rate = movie.rate === action.rate ? null : action.rate;
+      newMovie.toWatch = newMovie.toWatch
+        ? !newMovie.toWatch
+        : newMovie.toWatch;
+      newMovie.rate = newMovie.rate === action.rate ? null : action.rate;
       break;
     default:
       return state;
   }
 
-  if (!movie.like && !movie.toWatch && movie.rate === null) {
-    return { movies: state.movies.filter((m) => m.id !== movie.id) };
+  if (!newMovie.like && !newMovie.toWatch && newMovie.rate === null) {
+    return { movies: state.movies.filter((movie) => movie.id !== newMovie.id) };
   }
 
   return movieIndex === -1
-    ? { movies: [...state.movies, movie] }
-    : { movies: state.movies.map((m) => (m.id === movie.id ? movie : m)) };
+    ? { movies: [...state.movies, newMovie] }
+    : {
+        movies: state.movies.map((movie) =>
+          movie.id === newMovie.id ? newMovie : movie
+        ),
+      };
 }
 
-const store = createStore(reducer);
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, userReducer);
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
+});
+
+const persistor = persistStore(store);
+
+export { store, persistor };
 
 store.subscribe(() => {
   console.log(store.getState());
 });
-
-export default store;

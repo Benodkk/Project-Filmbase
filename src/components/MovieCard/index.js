@@ -1,11 +1,24 @@
-import MovieImg from "./MovieImg";
+import { useState } from "react";
+
+import MovieImgLink from "./MovieImgLink";
 import HiddenCard from "./HiddenCard";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, cardWidth }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div>
-      <MovieImg movie={movie} />
-      <HiddenCard movie={movie} />
+      <HiddenCard
+        movie={movie}
+        cardWidth={cardWidth}
+        isHovered={isHovered}
+        setIsHovered={setIsHovered}
+      />
+      <MovieImgLink
+        movie={movie}
+        cardWidth={cardWidth}
+        setIsHovered={setIsHovered}
+      />
     </div>
   );
 };

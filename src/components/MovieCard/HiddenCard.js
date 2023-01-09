@@ -1,17 +1,55 @@
-import { addToWatchList, like, rateMovie } from "../../redux";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const HiddenCard = ({ movie }) => {
-  const dispatch = useDispatch();
+import { useSelector } from "react-redux";
+
+import {
+  StyledHiddenCard,
+  StyledHiddenCardInfo,
+} from "../styles/shared/HiddenCard/HiddenCard.style";
+
+import MovieImg from "./MovieImg";
+import WatchItBtn from "./WatchItBtn";
+import RateStars from "./RateStars";
+import OpinionRow from "./OpinionRow";
+
+const HiddenCard = ({ movie, cardWidth, isHovered, setIsHovered }) => {
+  const store = useSelector((state) => state);
+
+  const [starHover, setStarHover] = useState(false);
+
+  const ratedMovie = store.movies.find(
+    (movieInStore) => movieInStore.id === movie.id
+  );
 
   return (
-    <div>
-      <div>{movie.title}</div>
-      <div onClick={() => dispatch(addToWatchList(movie.id))}>to watch</div>
-      <div onClick={() => dispatch(like(movie.id))}>like</div>
-      <div onClick={() => dispatch(rateMovie(movie.id, 5))}>rate</div>
-      <div onClick={() => dispatch(rateMovie(movie.id, 6))}>rate2</div>
-    </div>
+    <StyledHiddenCard
+      isHovered={isHovered}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        console.log("dupa");
+      }}
+    >
+      <MovieImg movie={movie} cardWidth={cardWidth} />
+      <StyledHiddenCardInfo isHovered={isHovered}>
+        <div>
+          <Link to={`/${movie.id}`}>{movie.title}</Link>{" "}
+          {movie.realsed.substring(0, 4)}
+        </div>
+        <OpinionRow
+          movie={movie}
+          ratedMovie={ratedMovie}
+          starHover={starHover}
+        />
+        <RateStars
+          movie={movie}
+          ratedMovie={ratedMovie}
+          starHover={starHover}
+          setStarHover={setStarHover}
+        />
+        <WatchItBtn movie={movie} ratedMovie={ratedMovie} />
+      </StyledHiddenCardInfo>
+    </StyledHiddenCard>
   );
 };
 
