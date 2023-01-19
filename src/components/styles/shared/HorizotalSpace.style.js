@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-const StyledHorizontalSpace = styled.div`
+export const StyledHorizontalSpace = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  gap: ${({ gap }) => gap};
 `;
 
-export default StyledHorizontalSpace;
+export const StyledHorizontalRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ gap }) => gap};
+`;

@@ -1,20 +1,22 @@
 import { useState } from "react";
 
-import MovieImgLink from "./MovieImgLink";
+import MovieImgLinkTrigger from "./MovieImgLinkTrigger";
 import HiddenCard from "./HiddenCard";
+import { StyledBlackScreen } from "../styles/shared/HiddenCard/HiddenCard.style";
 
 const MovieCard = ({ movie, cardWidth }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div>
-      <HiddenCard
-        movie={movie}
-        cardWidth={cardWidth}
+    <div style={{ color: "black" }}>
+      <StyledBlackScreen
         isHovered={isHovered}
-        setIsHovered={setIsHovered}
+        onMouseEnter={() => {
+          setIsHovered(false);
+        }}
       />
-      <MovieImgLink
+      <HiddenCard movie={movie} cardWidth={cardWidth} isHovered={isHovered} />
+      <MovieImgLinkTrigger
         movie={movie}
         cardWidth={cardWidth}
         setIsHovered={setIsHovered}

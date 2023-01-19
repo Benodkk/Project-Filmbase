@@ -10,6 +10,9 @@ const StyledWatchItBtn = styled.div`
   padding: 2px;
   font-size: 16px;
   cursor: pointer;
+  img {
+    width: 10%;
+  }
 
   &:hover {
     border: 0.5px solid rgb(0, 0, 0);

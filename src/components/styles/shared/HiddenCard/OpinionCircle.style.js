@@ -15,9 +15,6 @@ export const StyledOpinionCircle = styled.div`
   z-index: 1;
   transition: 0.5s;
   transform: ${({ scale }) => scale};
-  img {
-    width: 40px;
-  }
 `;
 export const StyledUserCircle = styled.div`
   display: flex;
@@ -28,7 +25,4 @@ export const StyledUserCircle = styled.div`
   border-radius: 25px;
   border: 0.5px solid black;
   font-size: 30px;
-  img {
-    width: 80%;
-  }
 `;

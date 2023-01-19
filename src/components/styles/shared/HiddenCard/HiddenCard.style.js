@@ -7,6 +7,7 @@ export const StyledHiddenCard = styled.div`
   height: 0px;
   overflow: visible;
   transition: 0.5s;
+  z-index: 5;
   opacity: ${({ isHovered }) => (isHovered ? 1 : 0)};
   visibility: ${({ isHovered }) => (isHovered ? "visible" : "hidden")};
 `;
@@ -15,18 +16,29 @@ export const StyledHiddenCardInfo = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
   width: 300px;
   gap: 20px;
   font-size: 20px;
   transition: 0.5s;
   background-color: white;
-  transform: ${({ isHovered }) =>
+  transform: ${({ isHovered, left }) =>
     isHovered
-      ? "translateX(0) translateY(0) scale(1)"
-      : " translateX(-80%) translateY(-40%) scale(0)"};
-  img {
-    width: 10%;
-    cursor: pointer;
-  }
+      ? left
+        ? "translateX(-520px) translateY(0) scale(1)"
+        : "translateX(0px) translateY(0) scale(1)"
+      : " translateX(-260px) translateY(-40%) scale(0)"};
+`;
+
+export const StyledBlackScreen = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  background-color: black;
+  transition: 0.5s;
+  z-index: 4;
+  visibility: ${({ isHovered }) => (isHovered ? "visible" : "hidden")};
+  opacity: ${({ isHovered }) => (isHovered ? 0.6 : 0)};
 `;

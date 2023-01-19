@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 import { useTheme } from "styled-components";
 
@@ -14,6 +15,18 @@ const ShowCardTrigger = ({ movie, cardWidth, trigger }) => {
   const ratedMovie = store.movies.find(
     (movieInStore) => movieInStore.id === movie.id
   );
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  const handleMouseEnter = () => {
+    const timeout = setTimeout(() => {
+      trigger();
+    }, 300);
+    setTimeoutId(timeout);
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(timeoutId);
+  };
 
   return (
     <StyledShowCardTrigger
@@ -24,9 +37,10 @@ const ShowCardTrigger = ({ movie, cardWidth, trigger }) => {
           ? "green"
           : theme.colors.gold
       }
-      width={`${cardWidth / 6}rem`}
-      height={`${cardWidth / 4}rem`}
-      onMouseEnter={trigger}
+      width={`${cardWidth / 6}px`}
+      height={`${cardWidth / 4}px`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {ratedMovie && ratedMovie.rate ? (
         ratedMovie.rate

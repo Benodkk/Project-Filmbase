@@ -5,17 +5,18 @@ import { like } from "../../redux";
 
 import ratesDescription from "../../database/ratesDescription";
 
-import user from "../../assets/user.png";
+import userBlack from "../../assets/user-black.png";
 import heartBlackEmpty from "../../assets/heart-black-empty.png";
 import heartGold from "../../assets/heart-gold.png";
 import heartYellow from "../../assets/heart-yellow.png";
 
-import StyledHorizontalSpace from "../styles/shared/HorizotalSpace.style";
+import { StyledHorizontalSpace } from "../styles/shared/HorizotalSpace.style";
 import StyledOpinionRow from "../styles/shared/HiddenCard/OpinionRow.style";
 import {
   StyledUserCircle,
   StyledOpinionCircle,
 } from "../styles/shared/HiddenCard/OpinionCircle.style";
+import { StyledActionImage, StyledImage } from "../styles/shared/Image.style";
 
 const OpinionRow = ({ movie, ratedMovie, starHover }) => {
   const dispatch = useDispatch();
@@ -44,14 +45,15 @@ const OpinionRow = ({ movie, ratedMovie, starHover }) => {
     <StyledHorizontalSpace>
       <StyledOpinionRow>
         <StyledUserCircle>
-          <img src={user} />
+          <StyledImage src={userBlack} width="40px" />
         </StyledUserCircle>
         <StyledOpinionCircle scale={!starHover ? "scale(0)" : "scale(1)"}>
           {starHover !== 0 ? starHover : ""}
         </StyledOpinionCircle>
         <div>{rate()}</div>
       </StyledOpinionRow>
-      <img
+      <StyledActionImage
+        width="10%"
         alt="heart"
         src={heartSrc()}
         onMouseEnter={() => setHeartHover(true)}

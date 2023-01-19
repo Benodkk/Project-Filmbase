@@ -8,7 +8,7 @@ export const StyledMovieImg = styled.img`
 export const StyledMovieImgLink = styled.img`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  transition: 0.5s;
+  transition: transform 0.5s;
 
   &:hover {
     transform: scale(1.15);

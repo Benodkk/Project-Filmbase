@@ -39,7 +39,6 @@ function userReducer(state = initialState, action) {
           like: false,
           toWatch: false,
           rate: null,
-          date: new Date(),
         }
       : state.movies[movieIndex];
 

@@ -4,7 +4,10 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     gold: "#FFC200",
+    brown: "#976103",
     black: "black",
+    darkGold: "#e7a90f",
+    grey: "#888888",
   },
   fonts: [],
   fontSizes: {
@@ -14,6 +17,9 @@ const theme = {
     normal18: "1.8rem",
     big: "2.4rem",
     headers: "4rem",
+  },
+  screenSizes: {
+    max: "1024px",
   },
 };
 

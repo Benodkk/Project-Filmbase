@@ -8,6 +8,7 @@ import starYellow from "../../assets/star-yellow.png";
 import starGold from "../../assets/star-gold.png";
 import starGoldEmpty from "../../assets/star-gold-empty.png";
 import starGrey from "../../assets/star-grey.png";
+import { StyledActionImage } from "../styles/shared/Image.style";
 
 const RateStars = ({ movie, ratedMovie, starHover, setStarHover }) => {
   const dispatch = useDispatch();
@@ -38,7 +39,8 @@ const RateStars = ({ movie, ratedMovie, starHover, setStarHover }) => {
   return (
     <div>
       {ratesDescription.map((rating) => (
-        <img
+        <StyledActionImage
+          width="10%"
           key={rating.value}
           alt="star"
           src={starSrc(rating.value)}

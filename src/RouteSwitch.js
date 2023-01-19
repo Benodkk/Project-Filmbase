@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TestComponent from "./TestComponent";
 
 import Header from "./components/Header";
+import { StyledBlackScreen } from "./components/styles/shared/HiddenCard/HiddenCard.style";
 
 const RouteSwitch = () => {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
+      {/* <StyledBlackScreen isHovered="true" /> */}
       <Routes>
         <Route path="/" element={<TestComponent />} />
         {/* <Route path="/:kind" element={} /> */}

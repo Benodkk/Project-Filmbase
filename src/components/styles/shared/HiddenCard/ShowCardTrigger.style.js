@@ -12,6 +12,7 @@ const StyledShowCardTrigger = styled.div`
   background-color: ${({ bgc }) => bgc};
   padding: 0 4px;
   z-index: 1;
+  cursor: pointer;
   img {
     width: ${({ width }) => width};
   }
