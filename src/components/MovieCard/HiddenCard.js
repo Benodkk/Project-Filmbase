@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-import {
-  StyledHiddenCard,
-  StyledHiddenCardInfo,
-} from "../styles/shared/HiddenCard/HiddenCard.style";
-
 import MovieImgTrigger from "./MovieImgTrigger";
 import WatchItBtn from "./WatchItBtn";
 import RateStars from "./RateStars";
 import OpinionRow from "./OpinionRow";
+
+import {
+  StyledHiddenCard,
+  StyledHiddenCardInfo,
+} from "../styles/shared/MovieCard/HiddenCard.style";
 
 const HiddenCard = ({ movie, cardWidth, isHovered }) => {
   const store = useSelector((state) => state);

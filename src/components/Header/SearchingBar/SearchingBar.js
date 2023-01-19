@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 import SearchingResult from "./SearchingResult";
+
 import search from "../../../assets/search.png";
-import { StyledHeaderInput } from "../../styles/shared/Header/SearchingBar/Input.style";
+
+import { StyledHeaderInput } from "../../styles/shared/Header/SearchingBar.style";
 
 function SearchingBar() {
   const [isFocused, setIsFocused] = useState(false);

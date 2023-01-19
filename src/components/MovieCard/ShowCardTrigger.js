@@ -6,7 +6,7 @@ import { useTheme } from "styled-components";
 import starBlack from "../../assets/star-black.png";
 import eyeWhite from "../../assets/eye-white.png";
 
-import StyledShowCardTrigger from "../styles/shared/HiddenCard/ShowCardTrigger.style";
+import { StyledShowCardTrigger } from "../styles/shared/MovieCard/HiddenCard.style";
 
 const ShowCardTrigger = ({ movie, cardWidth, trigger }) => {
   const store = useSelector((state) => state);

@@ -7,7 +7,7 @@ import eyeBlackEmpty from "../../assets/eye-black-empty.png";
 import eyeGold from "../../assets/eye-gold.png";
 import eyeYellow from "../../assets/eye-yellow.png";
 
-import StyledWatchItBtn from "../styles/shared/HiddenCard/WatchItBtn.style";
+import { StyledWatchItBtn } from "../styles/shared/MovieCard/HiddenCard.style";
 
 const WatchItBtn = ({ movie, ratedMovie }) => {
   const dispatch = useDispatch();

@@ -1,20 +1,19 @@
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
 
 import menu from "../../assets/menu.png";
 import user from "../../assets/user.png";
 import userGold from "../../assets/user-gold.png";
 
+import { useTheme } from "styled-components";
 import { StyledActionImage } from "../styles/shared/Image.style";
 import {
   StyledMenu,
   StyledHeaderElement,
   StyledMenuElement,
   StyledMenuLinkContainer,
-} from "../styles/shared/Header/HeaderElement.style";
+} from "../styles/shared/Header/Header.style";
 import { StyledDiv } from "../styles/shared/Div.style";
-import { useTheme } from "styled-components";
 
 const MenuHeader = () => {
   const theme = useTheme();

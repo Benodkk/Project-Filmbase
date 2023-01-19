@@ -4,12 +4,12 @@ import {
 } from "../../components/styles/shared/WelcomeSection.style";
 import welcomeMain from "../../assets/welcome-main.jpg";
 
-const WelcomeSection = () => {
+const WelcomeSection = ({ photo, height }) => {
   return (
     <StyledWelcomeSection>
       <StyledWelcomeImgContainer
-        height="50vh"
-        photo={welcomeMain}
+        height={height}
+        photo={photo}
       ></StyledWelcomeImgContainer>
     </StyledWelcomeSection>
   );

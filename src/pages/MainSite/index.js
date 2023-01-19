@@ -8,7 +8,7 @@ import RankingSection from "./RankingSection.js";
 const MainSite = () => {
   return (
     <StyledPageContainer>
-      <WelcomeSection />
+      <WelcomeSection photo={welcomeMain} height="50vh" />
       <MovieSlider />
       <RankingSection />
     </StyledPageContainer>

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+
 import MovieImgLink from "../../MovieCard/MovieImgLink";
+
 import {
   StyledResults,
   StyledOneResult,
-} from "../../styles/shared/Header/SearchingBar/Results.style";
+} from "../../styles/shared/Header/SearchingBar.style";
 
 const Trending = ({ results }) => {
   return (

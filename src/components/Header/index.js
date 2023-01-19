@@ -8,9 +8,9 @@ import logo from "../../assets/logo.png";
 import {
   StyledHeader,
   StyledHeaderContainer,
+  StyledHeaderElement,
 } from "../styles/shared/Header/Header.style";
 import { StyledImage } from "../styles/shared/Image.style";
-import { StyledHeaderElement } from "../styles/shared/Header/HeaderElement.style";
 import { StyledDiv } from "../styles/shared/Div.style";
 
 const Header = () => {

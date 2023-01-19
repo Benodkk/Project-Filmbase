@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+
+import db from "../../../database/db.json";
+
 import {
   StyledSliderContainer,
   StyledSlider,
@@ -7,10 +10,9 @@ import {
   StyledElement,
   StyledSliderButton,
 } from "../../../components/styles/shared/MainSite/MovieSlider/Slider.style";
-import db from "../../../database/db.json";
-
 import MovieCard from "../../../components/MovieCard";
 import { StyledDiv } from "../../../components/styles/shared/Div.style";
+
 let allData = db;
 
 const Slider = ({ sliderType }) => {

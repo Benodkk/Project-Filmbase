@@ -5,7 +5,7 @@ import MovieImgLink from "../../MovieCard/MovieImgLink";
 import {
   StyledResults,
   StyledOneResult,
-} from "../../styles/shared/Header/SearchingBar/Results.style";
+} from "../../styles/shared/Header/SearchingBar.style";
 
 const Results = ({ results }) => {
   return (

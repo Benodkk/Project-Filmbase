@@ -2,17 +2,19 @@ import React, { useState, useRef, useEffect } from "react";
 
 import db from "../../../database/db.json";
 
+import TrendingContainer from "./TrendingContainer";
+import Results from "./Results";
+
 import cross from "../../../assets/cross-grey.png";
 
 import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style";
-import { StyledSearchingResult } from "../../styles/shared/Header/SearchingBar/SearchingResult.style";
+import {
+  StyledSearchingResult,
+  StyledInput,
+} from "../../styles/shared/Header/SearchingBar.style";
 import { StyledActionImage } from "../../styles/shared/Image.style";
 import { StyledVerticalContainer } from "../../styles/shared/Container.style";
-import { StyledInput } from "../../styles/shared/Header/SearchingBar/Input.style";
 import { StyledDiv } from "../../styles/shared/Div.style";
-
-import TrendingContainer from "./TrendingContainer";
-import Results from "./Results";
 
 let allData = db.films
   .concat(db.tvSeries)

@@ -4,10 +4,10 @@ import db from "../../../database/db.json";
 
 import Trending from "./Trending";
 
-import { StyledDiv, StyledHoverDiv } from "../../styles/shared/Div.style";
-import { StyledTrendingContainer } from "../../styles/shared/Header/SearchingBar/Results.style";
-import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style";
 import { useTheme } from "styled-components";
+import { StyledDiv, StyledHoverDiv } from "../../styles/shared/Div.style";
+import { StyledTrendingContainer } from "../../styles/shared/Header/SearchingBar.style";
+import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style";
 
 const TrendingContainer = () => {
   const theme = useTheme();

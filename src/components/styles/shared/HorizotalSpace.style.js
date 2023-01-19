@@ -10,6 +10,6 @@ export const StyledHorizontalSpace = styled.div`
 
 export const StyledHorizontalRow = styled.div`
   display: flex;
-  align-items: center;
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : "center")};
   gap: ${({ gap }) => gap};
 `;

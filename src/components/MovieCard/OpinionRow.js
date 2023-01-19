@@ -11,11 +11,11 @@ import heartGold from "../../assets/heart-gold.png";
 import heartYellow from "../../assets/heart-yellow.png";
 
 import { StyledHorizontalSpace } from "../styles/shared/HorizotalSpace.style";
-import StyledOpinionRow from "../styles/shared/HiddenCard/OpinionRow.style";
 import {
+  StyledOpinionRow,
   StyledUserCircle,
   StyledOpinionCircle,
-} from "../styles/shared/HiddenCard/OpinionCircle.style";
+} from "../styles/shared/MovieCard/HiddenCard.style";
 import { StyledActionImage, StyledImage } from "../styles/shared/Image.style";
 
 const OpinionRow = ({ movie, ratedMovie, starHover }) => {
