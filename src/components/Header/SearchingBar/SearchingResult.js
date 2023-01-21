@@ -16,7 +16,7 @@ import { StyledActionImage } from "../../styles/shared/Image.style";
 import { StyledVerticalContainer } from "../../styles/shared/Container.style";
 import { StyledDiv } from "../../styles/shared/Div.style";
 
-let allData = db.films
+let allData = db.movies
   .concat(db.tvSeries)
   .concat(db.actors)
   .concat(db.writers)

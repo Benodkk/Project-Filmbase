@@ -17,7 +17,7 @@ import {
 import { StyledDiv } from "../../components/styles/shared/Div.style";
 import { StyledImage } from "../../components/styles/shared/Image.style";
 
-const RankingList = ({ displayData }) => {
+const RankingList = ({ displayData, page_nr }) => {
   const theme = useTheme();
   return (
     <StyledVerticalContainer gap="20px" padding="20px" paddingSide="20px">
@@ -25,7 +25,7 @@ const RankingList = ({ displayData }) => {
         return (
           <StyledRankingCardContainer key={element.id}>
             <StyledIndexNr width={140}>
-              {displayData.indexOf(element) + 1}
+              {(page_nr - 1) * 50 + displayData.indexOf(element) + 1}
             </StyledIndexNr>
             <MovieCard movie={element} cardWidth={140} />
             <StyledRankingCard>
@@ -38,7 +38,6 @@ const RankingList = ({ displayData }) => {
                     {element.realsed.slice(0, 4)}
                   </StyledDiv>
                 </StyledHorizontalRow>
-
                 <StyledHorizontalRow gap="5px">
                   <StyledDiv color={theme.colors.grey}>Genre</StyledDiv>
                   <StyledDiv>{element.genre}</StyledDiv>
@@ -47,10 +46,12 @@ const RankingList = ({ displayData }) => {
               <StyledRightSide>
                 <StyledHorizontalRow gap="5px" alignItems="flex-end">
                   <StyledImage width="40px" src={starGold} />
-                  <StyledDiv fontSize="28px">{element.rating}</StyledDiv>
+                  <StyledDiv fontSize="28px">
+                    {element.rating.toFixed(2).toString().replace(".", ",")}
+                  </StyledDiv>
                 </StyledHorizontalRow>
                 <StyledDiv color={theme.colors.grey} fontSize="14px">
-                  {element.numberOfRatings} ratings
+                  {element.numberOfRatings.toLocaleString("pl-PL")} ratings
                 </StyledDiv>
               </StyledRightSide>
             </StyledRankingCard>

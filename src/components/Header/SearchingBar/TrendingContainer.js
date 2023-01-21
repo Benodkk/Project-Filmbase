@@ -12,7 +12,7 @@ import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style"
 const TrendingContainer = () => {
   const theme = useTheme();
 
-  const trendingMovies = db.films
+  const trendingMovies = db.movies
     .sort((a, b) => b.trending - a.trending)
     .slice(0, 3)
     .concat(db.tvSeries.sort((a, b) => b.trending - a.trending).slice(0, 3));

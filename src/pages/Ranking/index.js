@@ -1,53 +1,67 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ListHeader from "../../components/ListHeader";
+import ListHeader from "./ListHeader";
 import RankingList from "./RankingList";
+import ListSort from "./ListSort";
+import SwitchPage from "./SwitchPage";
 
+import { renderData } from "./dataRanking";
 import moviePhoto from "../../assets/movie.jpg";
 
-import {
-  StyledPageContainer,
-  StyledVerticalContainer,
-} from "../../components/styles/shared/Container.style";
+import { StyledListContainer } from "../../components/styles/shared/Ranking/Ranking.style";
+import { StyledPageContainer } from "../../components/styles/shared/Container.style";
 import { StyledWelcomePhoto } from "../../components/styles/shared/WelcomePhoto.style";
 
-import db from "../../database/db.json";
-
 const Ranking = () => {
-  let { kind } = useParams();
+  const { kind } = useParams();
+  const { sort } = useParams();
+  const { genre } = useParams();
+  const { page_nr } = useParams();
 
-  let data =
-    kind === "movies"
-      ? db.films.sort((a, b) => (a.rating < b.rating ? 1 : -1))
-      : db.tvSeries.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+  const [displayData, setDisplayData] = useState([]);
 
-  const [filtrGenre, setFiltrGenre] = useState("");
-  const [displayData, setDisplayData] = useState(data.slice(0, 50));
+  let data = renderData.find((element) => element.id === kind).data;
+
+  // sort data
+  if (sort === "rate_down") {
+    data.sort((a, b) => (a.rating < b.rating ? 1 : -1));
+  } else if (sort === "rate_up") {
+    data.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+  } else if (sort === "date_down") {
+    data.sort((a, b) => (a.realsed < b.realsed ? 1 : -1));
+  } else if (sort === "date_up") {
+    data.sort((a, b) => (a.realsed > b.realsed ? 1 : -1));
+  } else if (sort === "popularity_down") {
+    data.sort((a, b) => (a.numberOfRatings < b.numberOfRatings ? 1 : -1));
+  } else if (sort === "popularity_up") {
+    data.sort((a, b) => (a.numberOfRatings > b.numberOfRatings ? 1 : -1));
+  }
+
+  // filter data
+  if (genre !== "no_filter") {
+    data = data.filter((element) => element.genre === genre);
+  }
 
   useEffect(() => {
-    filtrGenre
-      ? setDisplayData(
-          data.filter((element) => element.genre === filtrGenre).slice(0, 50)
-        )
-      : setDisplayData(data.slice(0, 50));
-  }, [filtrGenre]);
+    setDisplayData(data.slice(50 * page_nr - 50, 50 * page_nr));
+  }, [kind, sort, genre, page_nr]);
 
   return (
     <StyledPageContainer>
       <StyledWelcomePhoto photo={moviePhoto} />
-      <StyledVerticalContainer
-        shrink={true}
-        zIndex={1}
-        style={{ marginTop: "20vh", backgroundColor: "white" }}
-      >
-        <ListHeader
-          filtrGenre={filtrGenre}
-          setFiltrGenre={setFiltrGenre}
-          title={`${kind === "movies" ? "MOVIE" : "TV SERIES"} RANKING`}
+      <StyledListContainer shrink={true}>
+        <ListHeader kind={kind} sort={sort} genre={genre} />
+        <ListSort kind={kind} sort={sort} genre={genre} />
+        <RankingList displayData={displayData} page_nr={page_nr} />
+        <SwitchPage
+          data={data}
+          kind={kind}
+          sort={sort}
+          genre={genre}
+          page_nr={page_nr}
         />
-        <RankingList displayData={displayData} />
-      </StyledVerticalContainer>
+      </StyledListContainer>
     </StyledPageContainer>
   );
 };

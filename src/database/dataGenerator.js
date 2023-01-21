@@ -2,7 +2,7 @@ let faker = require("faker");
 let casual = require("casual");
 
 let database = {
-  films: [],
+  movies: [],
   tvSeries: [],
   directors: [],
   writers: [],
@@ -113,7 +113,7 @@ for (let i = 1; i <= 600; i++) {
   });
 }
 
-// FILMS AND TV SERIES
+// movies AND TV SERIES
 // trending means number of views in last week
 
 for (let i = 1; i <= 1000; i++) {
@@ -124,7 +124,7 @@ for (let i = 1; i <= 1000; i++) {
     let r = Math.floor(Math.random() * 600);
     if (randomActors.indexOf(r) === -1) randomActors.push(r);
   }
-  database.films.push({
+  database.movies.push({
     id: `film${i}`,
     title: word.charAt(0).toUpperCase() + word.slice(1),
     img: faker.image.image(180, 256, true),

@@ -1,4 +1,4 @@
-let genre = [
+let genres = [
   "Action",
   "Adventure",
   "Animation",
@@ -15,4 +15,4 @@ let genre = [
   "War",
 ];
 
-export default genre;
+export default genres;
