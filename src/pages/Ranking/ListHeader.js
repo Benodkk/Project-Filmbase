@@ -7,6 +7,7 @@ import { databaseType } from "./dataRanking";
 
 import { StyledListHeaderContainer } from "../../components/styles/shared/Container.style";
 import { StyledSelectionTitle } from "../../components/styles/shared/SelectionTitle.style";
+import { StyledBottomHeader } from "../../components/styles/shared/Ranking/Ranking.style";
 
 const ListHeader = ({ kind, sort, genre }) => {
   const [showFilters, setShowFilters] = useState(false);
@@ -16,18 +17,20 @@ const ListHeader = ({ kind, sort, genre }) => {
       <StyledSelectionTitle>
         {databaseType.find((database) => database.type === kind).title}
       </StyledSelectionTitle>
-      <ListType
-        kind={kind}
-        sort={sort}
-        setShowFilters={setShowFilters}
-        showFilters={showFilters}
-      />
-      <ListFilter
-        showFilters={showFilters}
-        kind={kind}
-        sort={sort}
-        genre={genre}
-      />
+      <StyledBottomHeader>
+        <ListType
+          kind={kind}
+          sort={sort}
+          setShowFilters={setShowFilters}
+          showFilters={showFilters}
+        />
+        <ListFilter
+          showFilters={showFilters}
+          kind={kind}
+          sort={sort}
+          genre={genre}
+        />
+      </StyledBottomHeader>
     </StyledListHeaderContainer>
   );
 };

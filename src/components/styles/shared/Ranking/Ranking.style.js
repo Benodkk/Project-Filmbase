@@ -15,6 +15,13 @@ export const StyledListContainer = styled.div`
 
 // list filter
 
+export const StyledBottomHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
 export const StyledFilterDiv = styled.div`
   color: ${({ selected, theme }) => (selected ? "black" : theme.colors.grey)};
   background-color: ${({ selected, theme }) =>
@@ -49,10 +56,10 @@ export const StyledFilterBtn = styled.div`
 `;
 
 export const StyledFilterContainer = styled.div`
-  display: ${({ show }) => (show ? "flex" : "none")};
-  flex-direction: column;
-  transition: opacity 1s;
-  opacity: ${({ show }) => (show ? 1 : 0)};
+  transition: 0.5s;
+  padding-top: ${({ show }) => (show ? "20px" : "0")};
+  height: ${({ show }) => (show ? "24px" : "0")};
+  overflow: hidden;
   width: 100%;
 `;
 
@@ -179,7 +186,7 @@ export const StyledRightSide = styled.div`
 // SwitchPage
 
 export const StyledButtonsContainer = styled.div`
-  display: flex;
+  display: ${({ show }) => (show ? "flex" : "none")};
   align-items: center;
   gap: 5px;
   padding: 15px;

@@ -5,6 +5,8 @@ import MainSite from "./pages/MainSite";
 import Ranking from "./pages/Ranking";
 
 import Header from "./components/Header";
+import User from "./pages/User";
+import UserList from "./pages/UserList";
 
 const RouteSwitch = () => {
   return (
@@ -19,8 +21,8 @@ const RouteSwitch = () => {
           element={<Ranking />}
         />
         {/* <Route path="/ranking/people/:kind" element={} /> */}
-        {/* <Route path="/User" element={} /> */}
-        {/* <Route path="/User/list/:kind" element={} /> */}
+        <Route path="/user" element={<User />} />
+        <Route path="/User/list/:kind/:page_nr" element={<UserList />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

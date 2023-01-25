@@ -56,10 +56,9 @@ const Ranking = () => {
         <RankingList displayData={displayData} page_nr={page_nr} />
         <SwitchPage
           data={data}
-          kind={kind}
-          sort={sort}
-          genre={genre}
+          switchPageUrl={`/ranking/${kind}/${sort}/${genre}`}
           page_nr={page_nr}
+          elementPerPage={50}
         />
       </StyledListContainer>
     </StyledPageContainer>

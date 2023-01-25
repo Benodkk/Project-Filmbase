@@ -5,21 +5,22 @@ import {
   StyledButtonsContainer,
 } from "../../components/styles/shared/Ranking/Ranking.style";
 
-const SwitchPage = ({ data, kind, sort, genre, page_nr }) => {
+const SwitchPage = ({ data, switchPageUrl, page_nr, elementPerPage }) => {
   const navigate = useNavigate();
 
+  let totalPages = data.length / elementPerPage;
+
   const createButtons = () => {
-    let totalPages = data.length / 50;
     let buttons = [];
-    for (let i = 1; i <= totalPages; i++) {
-      if (i > Number(page_nr) - 3 && i < Number(page_nr) + 3) {
+    for (let i = 0; i < totalPages; i++) {
+      if (i + 1 > Number(page_nr) - 3 && i + 1 < Number(page_nr) + 3) {
         buttons.push(
           <StyledButton
-            selected={Number(page_nr) === i ? true : false}
-            key={i}
-            onClick={() => navigate(`/ranking/${kind}/${sort}/${genre}/${i}`)}
+            selected={Number(page_nr) === i + 1 ? true : false}
+            key={i + 1}
+            onClick={() => navigate(`${switchPageUrl}/${i + 1}`)}
           >
-            {i}
+            {i + 1}
           </StyledButton>
         );
       }
@@ -28,10 +29,10 @@ const SwitchPage = ({ data, kind, sort, genre, page_nr }) => {
   };
 
   return (
-    <StyledButtonsContainer>
+    <StyledButtonsContainer show={totalPages > 1}>
       <StyledButton
         onClick={() =>
-          navigate(`/ranking/${kind}/${sort}/${genre}/${page_nr - 1}`)
+          page_nr > 1 ? navigate(`${switchPageUrl}/${Number(page_nr) - 1}`) : ""
         }
       >
         {"<"}
@@ -39,7 +40,9 @@ const SwitchPage = ({ data, kind, sort, genre, page_nr }) => {
       {createButtons()}
       <StyledButton
         onClick={() =>
-          navigate(`/ranking/${kind}/${sort}/${genre}/${Number(page_nr) + 1}`)
+          page_nr < totalPages
+            ? navigate(`${switchPageUrl}/${Number(page_nr) + 1}`)
+            : ""
         }
       >
         {">"}
