@@ -12,7 +12,7 @@ const Results = ({ results }) => {
     <StyledResults>
       {results.map((result) => (
         <StyledOneResult key={result.item.id} width={"14rem"}>
-          <MovieImgLink cardWidth={14} movie={result.item} />
+          <MovieImgLink cardWidth={140} movie={result.item} />
           <Link to={`/${result.item.id}`}>
             {result.item.title || result.item.name}
           </Link>

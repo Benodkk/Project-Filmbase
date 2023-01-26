@@ -17,7 +17,7 @@ const OneSection = ({ title, list, btnLink }) => {
       <StyledSectionTitle>{title}</StyledSectionTitle>
       <StyledOneSectionList>
         {list.slice(0, 6).map((element) => {
-          return <MovieCardTitle movie={element} />;
+          return <MovieCardTitle key={element.id} movie={element} />;
         })}
       </StyledOneSectionList>
       <StyledShowMoreBtn

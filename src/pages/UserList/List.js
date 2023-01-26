@@ -13,7 +13,7 @@ const List = ({ list }) => {
     <StyledVerticalContainer gap="20px" padding="20px" paddingSide="20px">
       {list.map((element) => {
         return (
-          <StyledListElement>
+          <StyledListElement key={element.id}>
             <MovieCard movie={element} cardWidth={140} />
             <StyledListCard>
               <LeftSideCard movie={element} />

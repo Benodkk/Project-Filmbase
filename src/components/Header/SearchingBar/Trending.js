@@ -12,7 +12,7 @@ const Trending = ({ results }) => {
     <StyledResults>
       {results.map((result) => (
         <StyledOneResult key={result.id} width={"14rem"}>
-          <MovieImgLink cardWidth={14} movie={result} />
+          <MovieImgLink cardWidth={140} movie={result} />
           <Link to={`/${result.id}`}>{result.title || result.name}</Link>
         </StyledOneResult>
       ))}
