@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.js": "/Filmbase-project/static/js/main.495aac54.js",
+    "static/media/movie.jpg": "/Filmbase-project/static/media/movie.9456b7f3eee4a2a4c4a4.jpg",
+    "static/media/welcome-main.jpg": "/Filmbase-project/static/media/welcome-main.fb2551bc21a08e5e9bae.jpg",
+    "static/media/movie-page.jpg": "/Filmbase-project/static/media/movie-page.a2c27611c6bc446c6e16.jpg",
+    "static/media/search.png": "/Filmbase-project/static/media/search.7a5fd401203c9f2e81f3.png",
+    "static/media/eye-yellow.png": "/Filmbase-project/static/media/eye-yellow.87db1a8ba1e7838ba5f3.png",
+    "static/media/eye-gold.png": "/Filmbase-project/static/media/eye-gold.e6184dca185b7e5093f3.png",
+    "static/media/star-gold-empty.png": "/Filmbase-project/static/media/star-gold-empty.b102f097281e816d7e6f.png",
+    "static/media/star-yellow.png": "/Filmbase-project/static/media/star-yellow.b0703b9ead616fa29edb.png",
+    "static/media/logo.png": "/Filmbase-project/static/media/logo.f98123cfd830a0fe3684.png",
+    "static/media/heart-yellow.png": "/Filmbase-project/static/media/heart-yellow.794f049111b70e85cd94.png",
+    "static/media/star-gold.png": "/Filmbase-project/static/media/star-gold.cc8fd21f2d6630d5dffc.png",
+    "static/media/heart-gold.png": "/Filmbase-project/static/media/heart-gold.ad0b92a96dd1327044a1.png",
+    "static/media/user.png": "/Filmbase-project/static/media/user.3aa2f6f6d3ddeb6c9aba.png",
+    "static/media/eye-black-empty.png": "/Filmbase-project/static/media/eye-black-empty.1073c8e465f168c13743.png",
+    "static/media/heart-black-empty.png": "/Filmbase-project/static/media/heart-black-empty.846b79fcbc6949df2ceb.png",
+    "static/media/eye-white.png": "/Filmbase-project/static/media/eye-white.17f24546468ea93d15d7.png",
+    "static/media/user-black.png": "/Filmbase-project/static/media/user-black.5cdfd5220aa1731cfa3e.png",
+    "static/media/star-grey.png": "/Filmbase-project/static/media/star-grey.ee2a236c3eecfa0f3022.png",
+    "static/media/star-black.png": "/Filmbase-project/static/media/star-black.5ad4098e4318fbe2f38d.png",
+    "index.html": "/Filmbase-project/index.html",
+    "main.495aac54.js.map": "/Filmbase-project/static/js/main.495aac54.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.495aac54.js"
+  ]
+}
