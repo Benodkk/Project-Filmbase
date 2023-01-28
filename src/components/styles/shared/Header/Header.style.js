@@ -9,7 +9,7 @@ export const StyledHeader = styled.div`
 `;
 
 export const StyledHeaderContainer = styled.header`
-  z-index: 4;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;

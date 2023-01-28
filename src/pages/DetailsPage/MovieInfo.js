@@ -1,6 +1,6 @@
+import InteractionCard from "../../components/InteractionCard";
 import MovieImg from "../../components/MovieCard/MovieImg";
 import { StyledMovieInfoContainer } from "../../components/styles/shared/DetailsPage/DetailsPage.style";
-import RightSideCard from "../UserList/RightSideCard";
 import MovieDetails from "./MovieDetails";
 
 const MovieInfo = ({ movie }) => {
@@ -8,7 +8,7 @@ const MovieInfo = ({ movie }) => {
     <StyledMovieInfoContainer>
       <MovieImg movie={movie} cardWidth={200} />
       <MovieDetails movie={movie} />
-      <RightSideCard movie={movie} />
+      <InteractionCard movie={movie} gap="20px" />
     </StyledMovieInfoContainer>
   );
 };

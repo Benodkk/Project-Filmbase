@@ -6,8 +6,11 @@ import Trending from "./Trending";
 
 import { useTheme } from "styled-components";
 import { StyledDiv, StyledHoverDiv } from "../../styles/shared/Div.style";
-import { StyledTrendingContainer } from "../../styles/shared/Header/SearchingBar.style";
-import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style";
+import {
+  StyledTrendingContainer,
+  StyledTrendingTitle,
+  StyledTrendingUpperRow,
+} from "../../styles/shared/Header/SearchingBar.style";
 
 const TrendingContainer = () => {
   const theme = useTheme();
@@ -20,10 +23,10 @@ const TrendingContainer = () => {
 
   return (
     <StyledTrendingContainer>
-      <StyledHorizontalSpace gap="30px">
-        <StyledHorizontalSpace>
+      <StyledTrendingUpperRow>
+        <StyledTrendingTitle>
           <StyledDiv fontSize="20px">TRENDING MOVIES</StyledDiv>
-          <Link to="/store/movies">
+          <Link to="/ranking/movies/popularity_down/no_filter/1">
             <StyledHoverDiv
               color={theme.colors.brown}
               hoverColor={theme.colors.darkGold}
@@ -32,10 +35,10 @@ const TrendingContainer = () => {
               Check out more!
             </StyledHoverDiv>
           </Link>
-        </StyledHorizontalSpace>
-        <StyledHorizontalSpace>
+        </StyledTrendingTitle>
+        <StyledTrendingTitle>
           <StyledDiv fontSize="20px">TRENDING TvSERIES</StyledDiv>
-          <Link to="/store/tvseries">
+          <Link to="/ranking/tvSeries/popularity_down/no_filter/1">
             <StyledHoverDiv
               color={theme.colors.brown}
               hoverColor={theme.colors.darkGold}
@@ -44,22 +47,9 @@ const TrendingContainer = () => {
               Check out more!
             </StyledHoverDiv>
           </Link>
-        </StyledHorizontalSpace>
-      </StyledHorizontalSpace>
+        </StyledTrendingTitle>
+      </StyledTrendingUpperRow>
       <Trending results={trendingMovies}></Trending>
-      <StyledHorizontalSpace>
-        <StyledDiv fontSize="20px">TRENDING ACTORS</StyledDiv>
-        <Link to="/store/people">
-          <StyledHoverDiv
-            color={theme.colors.brown}
-            hoverColor={theme.colors.darkGold}
-            fontSize="14px"
-          >
-            Check out more!
-          </StyledHoverDiv>
-        </Link>
-      </StyledHorizontalSpace>
-      <Trending results={trendingPeople}></Trending>
     </StyledTrendingContainer>
   );
 };

@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 
 import db from "../../database/db.json";
 
-import { StyledPageContainer } from "../../components/styles/shared/Container.style";
-import WelcomeMovieSection from "./WelcomeMovieSection";
 import MovieInfo from "./MovieInfo";
 import ActorsSection from "./ActorsSection";
+import WelcomeMovieSection from "./WelcomeMovieSection";
+
+import { StyledPageContainer } from "../../components/styles/shared/Container.style";
 
 const DetailsPage = () => {
   const { kind } = useParams();
@@ -14,7 +15,6 @@ const DetailsPage = () => {
     .concat(db.tvSeries)
     .find((element) => element.id === kind);
 
-  console.log(movie);
   return (
     <StyledPageContainer>
       <WelcomeMovieSection movie={movie} />

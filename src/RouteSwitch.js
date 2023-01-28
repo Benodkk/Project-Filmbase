@@ -1,7 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import TestComponent from "./TestComponent";
-import MainSite from "./pages/MainSite";
 import Ranking from "./pages/Ranking";
 
 import Header from "./components/Header";
@@ -12,10 +10,13 @@ import DetailsPage from "./pages/DetailsPage";
 
 const RouteSwitch = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<MainSite />} />
+        <Route
+          path="/"
+          element={<Navigate to="/ranking/movies/rate_down/no_filter/1" />}
+        />
         <Route path="/:kind" element={<DetailsPage />} />
         <Route
           path="/ranking/:kind/:sort/:genre/:page_nr"
@@ -25,7 +26,7 @@ const RouteSwitch = () => {
         <Route path="/User/list/:kind/:page_nr" element={<UserList />} />
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

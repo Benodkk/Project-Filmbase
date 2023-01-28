@@ -7,14 +7,14 @@ import Results from "./Results";
 
 import cross from "../../../assets/cross-grey.png";
 
-import { StyledHorizontalSpace } from "../../styles/shared/HorizotalSpace.style";
 import {
-  StyledSearchingResult,
+  StyledSearchingResultContainer,
   StyledInput,
+  StyledSearchingResult,
+  StyledInputInfo,
 } from "../../styles/shared/Header/SearchingBar.style";
 import { StyledActionImage } from "../../styles/shared/Image.style";
-import { StyledVerticalContainer } from "../../styles/shared/Container.style";
-import { StyledDiv } from "../../styles/shared/Div.style";
+import { useLocation } from "react-router-dom";
 
 let allData = db.movies
   .concat(db.tvSeries)
@@ -26,10 +26,15 @@ const SearchingResult = ({ isFocused, setIsFocused }) => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState("");
   const inputRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     inputRef.current.focus();
   }, [isFocused]);
+
+  useEffect(() => {
+    setQuery("");
+  }, [location]);
 
   const search = () => {
     const newResults = [];
@@ -55,18 +60,16 @@ const SearchingResult = ({ isFocused, setIsFocused }) => {
   };
 
   return (
-    <StyledSearchingResult isFocused={isFocused}>
-      <StyledVerticalContainer shrink={true}>
-        <StyledHorizontalSpace>
-          <StyledDiv fontSize="24px">
-            Search for the movies, tv series, people:
-          </StyledDiv>
+    <StyledSearchingResultContainer isFocused={isFocused}>
+      <StyledSearchingResult>
+        <StyledInputInfo>
+          <div>Search for the movies, tv series, people:</div>
           <StyledActionImage
             src={cross}
             width="30px"
             onClick={() => setIsFocused(false)}
           />
-        </StyledHorizontalSpace>
+        </StyledInputInfo>
         <StyledInput
           ref={inputRef}
           type="text"
@@ -79,10 +82,10 @@ const SearchingResult = ({ isFocused, setIsFocused }) => {
         {query.length === 0 ? (
           <TrendingContainer />
         ) : (
-          <Results results={results} />
+          <Results results={results} setIsFocused={setIsFocused} />
         )}
-      </StyledVerticalContainer>
-    </StyledSearchingResult>
+      </StyledSearchingResult>
+    </StyledSearchingResultContainer>
   );
 };
 

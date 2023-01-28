@@ -9,7 +9,7 @@ const MovieCard = ({ movie, cardWidth }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div style={{ color: "black" }}>
+    <div>
       <StyledBlackScreen
         isHovered={isHovered}
         onMouseEnter={() => {
@@ -21,6 +21,7 @@ const MovieCard = ({ movie, cardWidth }) => {
         movie={movie}
         cardWidth={cardWidth}
         setIsHovered={setIsHovered}
+        isLink={true}
       />
     </div>
   );

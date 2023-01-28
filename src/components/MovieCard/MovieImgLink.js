@@ -1,21 +1,23 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   StyledMovieImgLink,
   StyledMovieImgContainer,
-} from "../styles/shared/MovieImg.style";
-import { Link } from "react-router-dom";
+} from "../styles/shared/MovieCard/MovieImg.style";
 
 const MovieImgLink = ({ movie, cardWidth }) => {
+  const navigate = useNavigate();
   let height = `${cardWidth * 1.42}px`;
   return (
     <StyledMovieImgContainer cardWidth={`${cardWidth}px`} maxHeight={height}>
-      <Link to={`/${movie.id}`}>
-        <StyledMovieImgLink
-          alt={movie.title}
-          src={movie.img}
-          height={height}
-          width={`${cardWidth}px`}
-        />
-      </Link>
+      <StyledMovieImgLink
+        isLink={true}
+        onClick={() => navigate(`/${movie.id}`)}
+        alt={movie.title}
+        src={movie.img}
+        height={height}
+        width={`${cardWidth}px`}
+      />
     </StyledMovieImgContainer>
   );
 };

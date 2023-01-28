@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import SearchingResult from "./SearchingResult";
 
@@ -8,6 +9,11 @@ import { StyledHeaderInput } from "../../styles/shared/Header/SearchingBar.style
 
 function SearchingBar() {
   const [isFocused, setIsFocused] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsFocused(false);
+  }, [location]);
 
   return (
     <div>

@@ -13,6 +13,31 @@ export const StyledListContainer = styled.div`
   background-color: #fff;
 `;
 
+export const StyledRankingList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: ${({ shrink }) => (shrink ? "1024px" : "100%")};
+  box-sizing: border-box;
+  gap: 20px;
+  padding: 20px;
+`;
+
+// list type
+
+export const StyledListTypeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const StyledListType = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 // list filter
 
 export const StyledBottomHeader = styled.div`
@@ -60,6 +85,13 @@ export const StyledFilterContainer = styled.div`
   padding-top: ${({ show }) => (show ? "20px" : "0")};
   height: ${({ show }) => (show ? "24px" : "0")};
   overflow: hidden;
+  width: 100%;
+`;
+
+export const StyledFilterList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
 `;
 
@@ -172,6 +204,12 @@ export const StyledLeftSide = styled.div`
   justify-content: space-between;
   height: 100%;
   box-sizing: border-box;
+`;
+
+export const StyledGenre = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 export const StyledRightSide = styled.div`

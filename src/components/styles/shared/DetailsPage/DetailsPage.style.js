@@ -52,6 +52,7 @@ export const StyledMovieInfoContainer = styled.div`
 export const StyledMovieDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 20px;
 `;
 
@@ -95,7 +96,6 @@ export const StyledSliderContainer = styled.div`
 export const StyledSlider = styled.div`
   display: flex;
   gap: ${({ gap }) => gap};
-  /* padding: 15px 0 30px; */
   transition: 1s;
   transform: ${({ transform }) => "translate(" + (-transform + "px)")};
 `;

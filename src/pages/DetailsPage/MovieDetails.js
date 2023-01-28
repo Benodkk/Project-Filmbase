@@ -21,6 +21,8 @@ const MovieDetails = ({ movie }) => {
         <div>{writer.name}</div>
         <StyledFirstDiv>Genre</StyledFirstDiv>
         <div>{movie.genre}</div>
+        <StyledFirstDiv>Released:</StyledFirstDiv>
+        <div>{movie.realsed.slice(0, 10)}</div>
       </StyledMovieDetails>
     </StyledMovieDetailsContainer>
   );

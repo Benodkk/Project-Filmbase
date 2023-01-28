@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledSelectionTitle = styled.h1`
-  font-size: 4rem;
+  font-size: 40px;
   margin: 0;
-  color: ${({ color }) => color};
 `;

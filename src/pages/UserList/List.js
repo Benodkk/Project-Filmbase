@@ -1,28 +1,28 @@
 import MovieCard from "../../components/MovieCard";
-import RightSideCard from "./RightSideCard";
 import LeftSideCard from "./LeftSideCard";
+import InteractionCard from "../../components/InteractionCard";
 
-import { StyledVerticalContainer } from "../../components/styles/shared/Container.style";
 import {
+  StyledList,
   StyledListCard,
   StyledListElement,
 } from "../../components/styles/shared/UserList/UserList.style";
 
 const List = ({ list }) => {
   return (
-    <StyledVerticalContainer gap="20px" padding="20px" paddingSide="20px">
+    <StyledList>
       {list.map((element) => {
         return (
           <StyledListElement key={element.id}>
             <MovieCard movie={element} cardWidth={140} />
             <StyledListCard>
               <LeftSideCard movie={element} />
-              <RightSideCard movie={element} />
+              <InteractionCard movie={element} />
             </StyledListCard>
           </StyledListElement>
         );
       })}
-    </StyledVerticalContainer>
+    </StyledList>
   );
 };
 

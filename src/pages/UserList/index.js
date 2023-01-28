@@ -68,7 +68,7 @@ const UserList = () => {
     <StyledPageContainer>
       <StyledWelcomePhoto photo={moviePhoto} />
       <StyledListContainer shrink={true}>
-        <StyledListHeaderContainer BGcolor="black" color="white">
+        <StyledListHeaderContainer>
           <StyledSelectionTitle>{urlVaraibles[kind]}</StyledSelectionTitle>
         </StyledListHeaderContainer>
         <List list={data.slice(20 * page_nr - 20, 20 * page_nr)} />

@@ -120,3 +120,14 @@ export const StyledOneCount = styled.div`
   align-items: center;
   gap: 10px;
 `;
+
+// No movies info
+
+export const StyledNoMoviesInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: ${({ shrink }) => (shrink ? "1024px" : "100%")};
+  padding: 40px;
+  box-sizing: border-box;
+`;

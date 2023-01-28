@@ -18,7 +18,7 @@ const Header = () => {
     <StyledHeaderContainer>
       <StyledHeader>
         <StyledHeaderElement>
-          <Link to="/">
+          <Link to="/ranking/movies/rate_down/no_filter/1">
             <StyledHeaderElement>
               <StyledImage src={logo} width="40px" />
               <StyledDiv color="white">FILMBASE</StyledDiv>

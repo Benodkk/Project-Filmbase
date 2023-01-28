@@ -13,6 +13,16 @@ export const StyledListContainer = styled.div`
 
 // list
 
+export const StyledList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: ${({ shrink }) => (shrink ? "1024px" : "100%")};
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+`;
+
 export const StyledListElement = styled.div`
   display: flex;
   width: 100%;

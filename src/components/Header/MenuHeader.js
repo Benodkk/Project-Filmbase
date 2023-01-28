@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import menu from "../../assets/menu.png";
-import user from "../../assets/user.png";
-import userGold from "../../assets/user-gold.png";
 
 import { useTheme } from "styled-components";
 import { StyledActionImage } from "../styles/shared/Image.style";
@@ -13,7 +11,6 @@ import {
   StyledMenuElement,
   StyledMenuLinkContainer,
 } from "../styles/shared/Header/Header.style";
-import { StyledDiv } from "../styles/shared/Div.style";
 
 const MenuHeader = () => {
   const theme = useTheme();
@@ -31,22 +28,6 @@ const MenuHeader = () => {
   return (
     <StyledMenuElement>
       <StyledHeaderElement>
-        <Link
-          to="/user"
-          onMouseEnter={() => {
-            setUserHover(true);
-          }}
-          onMouseLeave={() => {
-            setUserHover(false);
-          }}
-        >
-          <StyledHeaderElement>
-            <StyledActionImage src={userHover ? userGold : user} width="40px" />
-            <StyledDiv color={userHover ? theme.colors.gold : "white"}>
-              User
-            </StyledDiv>
-          </StyledHeaderElement>
-        </Link>
         <StyledActionImage
           width="40px"
           src={menu}
@@ -64,9 +45,9 @@ const MenuHeader = () => {
             onMouseEnter={() => clearTimeout(timer)}
             onMouseLeave={() => setShowMenu(false)}
           >
-            <Link to="/ranking/movies">Rankings</Link>
-            <Link to="/store/movies">Movies</Link>
-            <Link to="/store/TvSeries">TvSeries</Link>
+            <Link to="/user">Profile</Link>
+            <Link to="/ranking/movies/rate_down/no_filter/1">Movies</Link>
+            <Link to="/ranking/tvSeries/rate_down/no_filter/1">TvSeries</Link>
           </StyledMenuLinkContainer>
         </StyledMenu>
       </StyledMenuElement>

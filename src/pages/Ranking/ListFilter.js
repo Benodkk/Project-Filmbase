@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import genres from "../../database/genre";
 
 import { useTheme } from "styled-components";
-import { StyledHorizontalSpace } from "../../components/styles/shared/HorizotalSpace.style";
 import {
   StyledFilterDiv,
   StyledFilterContainer,
+  StyledFilterList,
 } from "../../components/styles/shared/Ranking/Ranking.style";
 
 const ListFilter = ({ showFilters, kind, sort, genre }) => {
@@ -14,7 +14,7 @@ const ListFilter = ({ showFilters, kind, sort, genre }) => {
   const theme = useTheme();
   return (
     <StyledFilterContainer show={showFilters}>
-      <StyledHorizontalSpace>
+      <StyledFilterList>
         <StyledFilterDiv
           color={theme.colors.grey}
           selected={genre === "no_filter" ? true : false}
@@ -39,7 +39,7 @@ const ListFilter = ({ showFilters, kind, sort, genre }) => {
             </StyledFilterDiv>
           );
         })}
-      </StyledHorizontalSpace>
+      </StyledFilterList>
     </StyledFilterContainer>
   );
 };

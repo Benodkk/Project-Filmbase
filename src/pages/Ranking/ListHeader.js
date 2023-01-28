@@ -13,7 +13,7 @@ const ListHeader = ({ kind, sort, genre }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <StyledListHeaderContainer BGcolor="black" color="white" gap="20px">
+    <StyledListHeaderContainer gap="20px">
       <StyledSelectionTitle>
         {databaseType.find((database) => database.type === kind).title}
       </StyledSelectionTitle>

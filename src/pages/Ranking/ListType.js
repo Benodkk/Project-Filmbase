@@ -3,19 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { databaseType } from "./dataRanking";
 
 import {
-  StyledHorizontalRow,
-  StyledHorizontalSpace,
-} from "../../components/styles/shared/HorizotalSpace.style";
-import {
   StyledFilterBtn,
   StyledFilterDiv,
+  StyledListType,
+  StyledListTypeContainer,
 } from "../../components/styles/shared/Ranking/Ranking.style";
 
 const ListType = ({ kind, sort, setShowFilters, showFilters }) => {
   const navigate = useNavigate();
   return (
-    <StyledHorizontalSpace>
-      <StyledHorizontalRow gap="10px">
+    <StyledListTypeContainer>
+      <StyledListType>
         {databaseType.map((database) => {
           return (
             <StyledFilterDiv
@@ -30,14 +28,14 @@ const ListType = ({ kind, sort, setShowFilters, showFilters }) => {
             </StyledFilterDiv>
           );
         })}
-      </StyledHorizontalRow>
+      </StyledListType>
       <StyledFilterBtn
         show={kind === "movies" ? true : kind === "tvSeries" ? true : false}
         onClick={() => setShowFilters(!showFilters)}
       >
         Filters
       </StyledFilterBtn>
-    </StyledHorizontalSpace>
+    </StyledListTypeContainer>
   );
 };
 

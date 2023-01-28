@@ -19,13 +19,32 @@ export const StyledOneResult = styled.div`
   width: ${({ width }) => width};
 `;
 
+// trending
+
 export const StyledTrendingContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const StyledSearchingResult = styled.div`
+export const StyledTrendingUpperRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+`;
+
+export const StyledTrendingTitle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+// searching results
+
+export const StyledSearchingResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +59,22 @@ export const StyledSearchingResult = styled.div`
   transition: opacity 0.5s;
   opacity: ${({ isFocused }) => (isFocused ? 1 : 0)};
   visibility: ${({ isFocused }) => (isFocused ? "visible" : "hidden")};
+`;
+
+export const StyledSearchingResult = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1024px;
+  box-sizing: border-box;
+`;
+
+export const StyledInputInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 24px;
 `;
 
 export const StyledInput = styled.input`

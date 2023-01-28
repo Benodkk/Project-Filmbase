@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import db from "../../database/db.json";
 
+import MovieImg from "../../components/MovieCard/MovieImg";
+
 import {
   StyledActorName,
   StyledOneActor,
@@ -9,7 +11,6 @@ import {
   StyledSliderButton,
   StyledSliderContainer,
 } from "../../components/styles/shared/DetailsPage/DetailsPage.style";
-import MovieImg from "../../components/MovieCard/MovieImg";
 
 const ActorsSlider = ({ movie }) => {
   const [slide, setSlide] = useState(0);
@@ -23,10 +24,9 @@ const ActorsSlider = ({ movie }) => {
   const cardWidth = 144;
   const gap = (1024 - 6 * cardWidth) / 5;
   const maxSlide = actors.length * cardWidth + (actors.length - 1) * gap;
-  const maxSlides = Math.floor(maxSlide / 1024);
+  const maxSlides = Math.floor((maxSlide - 1) / 1024);
 
   useEffect(() => {
-    console.log(slide);
     if (maxSlides !== 0) {
       if (slide === maxSlides) {
         setTransform((slide - 1) * 1024 + maxSlide - 1024);
@@ -49,7 +49,7 @@ const ActorsSlider = ({ movie }) => {
           return (
             <StyledOneActor width={cardWidth}>
               <MovieImg cardWidth={cardWidth} movie={actor} />
-              <StyledActorName>{actor.name}</StyledActorName>
+              <StyledActorName width={cardWidth}>{actor.name}</StyledActorName>
             </StyledOneActor>
           );
         })}

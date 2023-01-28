@@ -1,4 +1,4 @@
-import { StyledMovieImg } from "../styles/shared/MovieImg.style";
+import { StyledMovieImg } from "../styles/shared/MovieCard/MovieImg.style";
 
 const MovieImg = ({ movie, cardWidth }) => {
   let height = `${cardWidth * 1.42}px`;

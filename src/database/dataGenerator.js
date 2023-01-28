@@ -1,3 +1,5 @@
+import genres from "./genre";
+
 let faker = require("faker");
 let casual = require("casual");
 
@@ -7,67 +9,7 @@ let database = {
   directors: [],
   writers: [],
   actors: [],
-  articlesBig: [],
-  articlesSmall: [],
-  articlesMedSmall: [],
-  articlesMedBig: [],
 };
-
-let genre = [
-  "Action",
-  "Adventure",
-  "Animation",
-  "Biography",
-  "Comedy",
-  "Crime",
-  "Drama",
-  "Family",
-  "Horror",
-  "Musical",
-  "Sci-Fi",
-  "Sport",
-  "Thiller",
-  "War",
-];
-
-// ARTICLES FOR MAIN PAGE
-
-database.articlesBig.push({
-  id: `articleBig1`,
-  type: "Series",
-  description: casual.sentences(1),
-  comments: "8 comments",
-});
-
-for (let i = 1; i <= 4; i++) {
-  database.articlesSmall.push({
-    articlesBigId: `articleSmall${i}`,
-    type: genre[Math.floor(Math.random() * genre.length)],
-    description: casual.sentences(1),
-    img: faker.image.abstract(542, 306, true),
-    comments: `${Math.floor(Math.random() * 200)} comments`,
-  });
-}
-
-for (let i = 1; i <= 2; i++) {
-  database.articlesMedBig.push({
-    articlesBigId: `articleMediumBig${i}`,
-    type: genre[Math.floor(Math.random() * genre.length)],
-    description: casual.sentences(1),
-    img: faker.image.abstract(814, 456, true),
-    comments: `${Math.floor(Math.random() * 200)} comments`,
-  });
-}
-
-for (let i = 1; i <= 4; i++) {
-  database.articlesMedSmall.push({
-    articlesBigId: `articleMediumSmall${i}`,
-    type: genre[Math.floor(Math.random() * genre.length)],
-    description: casual.sentences(1),
-    img: faker.image.abstract(640, 360, true),
-    comments: `${Math.floor(Math.random() * 200)} comments`,
-  });
-}
 
 //PEOPLE
 
@@ -132,7 +74,7 @@ for (let i = 1; i <= 1000; i++) {
     rating: Math.floor(casual.double(100, 1000)) / 100,
     numberOfRatings: casual.integer(1000, 100000),
     trending: casual.integer(1000, 10000),
-    genre: genre[Math.floor(Math.random() * genre.length)],
+    genre: genres[Math.floor(Math.random() * genres.length)],
     realsed: faker.date.between(
       "1980-01-01T00:00:00.000Z",
       "2022-07-30T00:00:00.000Z"
@@ -159,7 +101,7 @@ for (let i = 1; i <= 1000; i++) {
     rating: Math.floor(casual.double(100, 1000)) / 100,
     numberOfRatings: casual.integer(1000, 100000),
     trending: casual.integer(1000, 10000),
-    genre: genre[Math.floor(Math.random() * genre.length)],
+    genre: genres[Math.floor(Math.random() * genres.length)],
     realsed: faker.date.between(
       "1980-01-01T00:00:00.000Z",
       "2022-07-30T00:00:00.000Z"
