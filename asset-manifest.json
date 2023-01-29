@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/Project-Filmbase/static/js/main.93c46eef.js",
+    "main.js": "/Project-Filmbase/static/js/main.40349cca.js",
     "static/media/movie.jpg": "/Project-Filmbase/static/media/movie.9456b7f3eee4a2a4c4a4.jpg",
     "static/media/welcome-main.jpg": "/Project-Filmbase/static/media/welcome-main.fb2551bc21a08e5e9bae.jpg",
     "static/media/movie-page.jpg": "/Project-Filmbase/static/media/movie-page.a2c27611c6bc446c6e16.jpg",
@@ -21,9 +21,9 @@
     "static/media/star-grey.png": "/Project-Filmbase/static/media/star-grey.ee2a236c3eecfa0f3022.png",
     "static/media/star-black.png": "/Project-Filmbase/static/media/star-black.5ad4098e4318fbe2f38d.png",
     "index.html": "/Project-Filmbase/index.html",
-    "main.93c46eef.js.map": "/Project-Filmbase/static/js/main.93c46eef.js.map"
+    "main.40349cca.js.map": "/Project-Filmbase/static/js/main.40349cca.js.map"
   },
   "entrypoints": [
-    "static/js/main.93c46eef.js"
+    "static/js/main.40349cca.js"
   ]
 }
