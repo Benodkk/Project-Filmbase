@@ -18,8 +18,11 @@ import { StyledListContainer } from "../../components/styles/shared/UserList/Use
 import { StyledSelectionTitle } from "../../components/styles/shared/SelectionTitle.style";
 
 const UserList = () => {
-  const { kind } = useParams();
-  const { page_nr } = useParams();
+  const { kind, page_nr } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const store = useSelector((state) => state);
 

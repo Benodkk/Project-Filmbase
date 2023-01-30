@@ -12,6 +12,9 @@ import db from "../../database/db.json";
 import { StyledPageContainer } from "../../components/styles/shared/Container.style";
 
 const User = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const store = useSelector((state) => state);
 
   const [displayMovies, setDisplayMovies] = useState({

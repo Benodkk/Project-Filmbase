@@ -14,10 +14,11 @@ import { StyledPageContainer } from "../../components/styles/shared/Container.st
 import { StyledWelcomePhoto } from "../../components/styles/shared/WelcomePhoto.style";
 
 const Ranking = () => {
-  const { kind } = useParams();
-  const { sort } = useParams();
-  const { genre } = useParams();
-  const { page_nr } = useParams();
+  const { kind, sort, genre, page_nr } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [kind]);
 
   const [displayData, setDisplayData] = useState([]);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import db from "../../database/db.json";
@@ -10,6 +10,10 @@ import WelcomeMovieSection from "./WelcomeMovieSection";
 import { StyledPageContainer } from "../../components/styles/shared/Container.style";
 
 const DetailsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { kind } = useParams();
 
   const movie = db.movies
