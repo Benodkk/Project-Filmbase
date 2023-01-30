@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import MovieImgLink from "../../MovieCard/MovieImgLink";
@@ -11,8 +12,8 @@ const Results = ({ results }) => {
   return (
     <StyledResults>
       {results.map((result) => (
-        <StyledOneResult key={result.item.id} width={"140px"}>
-          <MovieImgLink cardWidth={140} movie={result.item} />
+        <StyledOneResult key={result.item.id}>
+          <MovieImgLink movie={result.item} />
           <Link to={`/${result.item.id}`}>
             {result.item.title || result.item.name}
           </Link>

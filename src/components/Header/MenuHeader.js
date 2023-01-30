@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import menu from "../../assets/menu.png";
 
-import { useTheme } from "styled-components";
 import { StyledActionImage } from "../styles/shared/Image.style";
 import {
   StyledMenu,
@@ -13,10 +12,13 @@ import {
 } from "../styles/shared/Header/Header.style";
 
 const MenuHeader = () => {
-  const theme = useTheme();
+  const location = useLocation();
   const [showMenu, setShowMenu] = useState(false);
   const [timer, setTimer] = useState("");
-  const [userHover, setUserHover] = useState(false);
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location]);
 
   const runTimer = () => {
     const timeout = setTimeout(() => {
@@ -31,7 +33,6 @@ const MenuHeader = () => {
         <StyledActionImage
           width="40px"
           src={menu}
-          padding="0 0 0 15px"
           onClick={() => {
             setShowMenu(true);
             runTimer();
@@ -39,7 +40,7 @@ const MenuHeader = () => {
         />
       </StyledHeaderElement>
       <StyledMenuElement>
-        <StyledMenu>
+        <StyledMenu showMenu={showMenu}>
           <StyledMenuLinkContainer
             showMenu={showMenu}
             onMouseEnter={() => clearTimeout(timer)}

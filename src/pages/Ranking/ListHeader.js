@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import ListFilter from "./ListFilter";
 import ListType from "./ListType";
 
-import { databaseType } from "./dataRanking";
+import { databaseType } from "../../database/dataRanking";
 
 import { StyledListHeaderContainer } from "../../components/styles/shared/Container.style";
 import { StyledSelectionTitle } from "../../components/styles/shared/SelectionTitle.style";
@@ -13,7 +13,7 @@ const ListHeader = ({ kind, sort, genre }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   return (
-    <StyledListHeaderContainer gap="20px">
+    <StyledListHeaderContainer>
       <StyledSelectionTitle>
         {databaseType.find((database) => database.type === kind).title}
       </StyledSelectionTitle>

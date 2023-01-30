@@ -1,6 +1,7 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import { databaseType } from "./dataRanking";
+import { databaseType } from "../../database/dataRanking";
 
 import {
   StyledFilterBtn,

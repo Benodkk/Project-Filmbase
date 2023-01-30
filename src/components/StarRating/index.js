@@ -1,3 +1,5 @@
+import React from "react";
+
 import starGold from "../../assets/star-gold.png";
 
 import { StyledImage } from "../styles/shared/Image.style";

@@ -1,4 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
+
 import { useTheme } from "styled-components";
 import { StyledNoMoviesInfo } from "../../components/styles/shared/User/User.style";
 import { StyledHoverDiv } from "../../components/styles/shared/Div.style";

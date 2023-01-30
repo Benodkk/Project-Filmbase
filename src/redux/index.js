@@ -87,7 +87,3 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 export { store, persistor };
-
-store.subscribe(() => {
-  console.log(store.getState());
-});

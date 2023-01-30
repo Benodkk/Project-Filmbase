@@ -1,11 +1,20 @@
 import styled from "styled-components";
+import { devices } from "../../deviceWidth";
 
 export const StyledHeader = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 1024px;
+  width: 90%;
   padding: 10px 0;
+
+  @media ${devices.tablet} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media ${devices.desktop} {
+    width: 1024px;
+  }
 `;
 
 export const StyledHeaderContainer = styled.header`
@@ -28,6 +37,10 @@ export const StyledHeaderElement = styled.div`
   font-size: 40px;
 `;
 
+export const StyledWebsiteName = styled.div`
+  color: white;
+`;
+
 export const StyledMenuElement = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,6 +54,7 @@ export const StyledMenu = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  visibility: ${({ showMenu }) => (showMenu ? "visible" : "hidden")};
 `;
 
 export const StyledMenuLinkContainer = styled.div`

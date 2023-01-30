@@ -1,3 +1,5 @@
+import React from "react";
+
 import StarRating from "../../components/StarRating";
 
 import moviePage from "../../assets/movie-page.jpg";

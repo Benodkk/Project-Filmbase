@@ -64,11 +64,7 @@ const SearchingResult = ({ isFocused, setIsFocused }) => {
       <StyledSearchingResult>
         <StyledInputInfo>
           <div>Search for the movies, tv series, people:</div>
-          <StyledActionImage
-            src={cross}
-            width="30px"
-            onClick={() => setIsFocused(false)}
-          />
+          <StyledActionImage src={cross} onClick={() => setIsFocused(false)} />
         </StyledInputInfo>
         <StyledInput
           ref={inputRef}
@@ -78,7 +74,6 @@ const SearchingResult = ({ isFocused, setIsFocused }) => {
           onKeyUp={search}
           placeholder="Search:"
         />
-
         {query.length === 0 ? (
           <TrendingContainer />
         ) : (

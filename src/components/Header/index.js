@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import SearchingBar from "./SearchingBar/SearchingBar";
@@ -9,9 +10,9 @@ import {
   StyledHeader,
   StyledHeaderContainer,
   StyledHeaderElement,
+  StyledWebsiteName,
 } from "../styles/shared/Header/Header.style";
 import { StyledImage } from "../styles/shared/Image.style";
-import { StyledDiv } from "../styles/shared/Div.style";
 
 const Header = () => {
   return (
@@ -21,7 +22,7 @@ const Header = () => {
           <Link to="/ranking/movies/rate_down/no_filter/1">
             <StyledHeaderElement>
               <StyledImage src={logo} width="40px" />
-              <StyledDiv color="white">FILMBASE</StyledDiv>
+              <StyledWebsiteName>FILMBASE</StyledWebsiteName>
             </StyledHeaderElement>
           </Link>
         </StyledHeaderElement>

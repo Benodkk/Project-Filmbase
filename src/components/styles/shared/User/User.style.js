@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../deviceWidth";
 
 // Welcome section
 
@@ -46,13 +47,16 @@ export const StyledMovieCardTitle = styled.div`
   flex-direction: column;
   gap: 8px;
   padding-bottom: 12px;
-  width: 144px;
+  width: 100px;
   height: 100%;
   text-align: center;
   transition: 0.5s;
   cursor: pointer;
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 6px;
+  }
+  @media ${devices.tablet} {
+    width: 140px;
   }
 `;
 
@@ -61,9 +65,14 @@ export const StyledMovieCardTitle = styled.div`
 export const StyledOneSectionContainer = styled.div`
   display: ${({ show }) => (show ? "flex" : "none")};
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  width: 1024px;
-  padding: 30px 0;
+  width: 100%;
+  padding: 20px 0 10px;
+
+  @media ${devices.desktop} {
+    width: 1024px;
+  }
 `;
 
 export const StyledSectionTitle = styled.div`
@@ -72,8 +81,14 @@ export const StyledSectionTitle = styled.div`
 
 export const StyledOneSectionList = styled.div`
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
-  gap: 32px;
+  gap: 10px;
+  @media ${devices.desktop} {
+    gap: 32px;
+    justify-content: flex-start;
+  }
 `;
 
 export const StyledShowMoreBtn = styled.button`
@@ -84,6 +99,7 @@ export const StyledShowMoreBtn = styled.button`
   border: 1px solid black;
   font-size: 16px;
   transition: 0.5s;
+  color: black;
   cursor: pointer;
   &:hover {
     color: white;
@@ -103,11 +119,14 @@ export const StyledSectionHeaderContainer = styled.div`
 
 export const StyledSectionHeader = styled.div`
   display: flex;
-  width: 1024px;
+  width: 100%;
   gap: 20px;
   flex-direction: column;
   padding: 40px 0 20px;
   border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
+  @media ${devices.desktop} {
+    width: 1024px;
+  }
 `;
 
 export const StyledCountedList = styled.div`
@@ -115,10 +134,21 @@ export const StyledCountedList = styled.div`
   justify-content: space-around;
 `;
 
-export const StyledOneCount = styled.div`
+export const StyledIconNr = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
+
+export const StyledOneCount = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  @media ${devices.tablet} {
+    gap: 10px;
+    flex-direction: row;
+  }
 `;
 
 // No movies info

@@ -1,3 +1,5 @@
+import React from "react";
+
 import starGold from "../../assets/star-gold.png";
 import eyeGold from "../../assets/eye-gold.png";
 import heartGold from "../../assets/heart-gold.png";
@@ -5,6 +7,7 @@ import heartGold from "../../assets/heart-gold.png";
 import { useTheme } from "styled-components";
 import {
   StyledCountedList,
+  StyledIconNr,
   StyledOneCount,
   StyledSectionHeader,
   StyledSectionHeaderContainer,
@@ -20,18 +23,24 @@ const SectionHeader = ({ title, rated, toWatch, favourite }) => {
         <StyledDiv fontSize="32px">{title}</StyledDiv>
         <StyledCountedList>
           <StyledOneCount>
-            <StyledImage src={starGold} width="30px" />
-            <StyledDiv fontSize="24px">{rated.length}</StyledDiv>
+            <StyledIconNr>
+              <StyledImage src={starGold} width="30px" />
+              <StyledDiv fontSize="24px">{rated.length}</StyledDiv>
+            </StyledIconNr>
             <StyledDiv color={theme.colors.grey}>ratings</StyledDiv>
           </StyledOneCount>
           <StyledOneCount>
-            <StyledImage src={eyeGold} width="30px" />
-            <StyledDiv fontSize="24px">{toWatch.length}</StyledDiv>
+            <StyledIconNr>
+              <StyledImage src={eyeGold} width="30px" />
+              <StyledDiv fontSize="24px">{toWatch.length}</StyledDiv>
+            </StyledIconNr>
             <StyledDiv color={theme.colors.grey}>to watch</StyledDiv>
           </StyledOneCount>
           <StyledOneCount>
-            <StyledImage src={heartGold} width="30px" />
-            <StyledDiv fontSize="24px">{favourite.length}</StyledDiv>
+            <StyledIconNr>
+              <StyledImage src={heartGold} width="30px" />
+              <StyledDiv fontSize="24px">{favourite.length}</StyledDiv>
+            </StyledIconNr>
             <StyledDiv color={theme.colors.grey}>favourites</StyledDiv>
           </StyledOneCount>
         </StyledCountedList>

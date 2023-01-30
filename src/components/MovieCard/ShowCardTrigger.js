@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import React, { useState } from "react";
 
-import { useTheme } from "styled-components";
+import { useSelector } from "react-redux";
 
 import starBlack from "../../assets/star-black.png";
 import eyeWhite from "../../assets/eye-white.png";
 
+import { useTheme } from "styled-components";
 import { StyledShowCardTrigger } from "../styles/shared/MovieCard/HiddenCard.style";
 
-const ShowCardTrigger = ({ movie, cardWidth, trigger }) => {
+const ShowCardTrigger = ({ movie, trigger }) => {
   const store = useSelector((state) => state);
   const theme = useTheme();
 
@@ -37,8 +37,6 @@ const ShowCardTrigger = ({ movie, cardWidth, trigger }) => {
           ? "green"
           : theme.colors.gold
       }
-      width={`${cardWidth / 6}px`}
-      height={`${cardWidth / 4}px`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

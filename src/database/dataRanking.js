@@ -1,4 +1,4 @@
-import db from "../../database/db.json";
+import db from "./db.json";
 
 export const sortList = [
   {

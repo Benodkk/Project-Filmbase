@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -67,7 +67,7 @@ const UserList = () => {
   return (
     <StyledPageContainer>
       <StyledWelcomePhoto photo={moviePhoto} />
-      <StyledListContainer shrink={true}>
+      <StyledListContainer>
         <StyledListHeaderContainer>
           <StyledSelectionTitle>{urlVaraibles[kind]}</StyledSelectionTitle>
         </StyledListHeaderContainer>

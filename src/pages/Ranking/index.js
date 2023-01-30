@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ListHeader from "./ListHeader";
@@ -6,7 +6,7 @@ import RankingList from "./RankingList";
 import ListSort from "./ListSort";
 import SwitchPage from "./SwitchPage";
 
-import { renderData } from "./dataRanking";
+import { renderData } from "../../database/dataRanking";
 import moviePhoto from "../../assets/movie.jpg";
 
 import { StyledListContainer } from "../../components/styles/shared/Ranking/Ranking.style";
@@ -50,7 +50,7 @@ const Ranking = () => {
   return (
     <StyledPageContainer>
       <StyledWelcomePhoto photo={moviePhoto} />
-      <StyledListContainer shrink={true}>
+      <StyledListContainer>
         <ListHeader kind={kind} sort={sort} genre={genre} />
         <ListSort kind={kind} sort={sort} genre={genre} />
         <RankingList displayData={displayData} page_nr={page_nr} />

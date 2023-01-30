@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from "../../deviceWidth";
 
 export const StyledWelcomeMovieSection = styled.div`
   width: 100%;
@@ -10,19 +11,28 @@ export const StyledWelcomeMovieSection = styled.div`
 `;
 
 export const StyledWelcomeMovieContainer = styled.div`
-  width: 1124px;
+  width: 100%;
   height: 50vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 25px 50px;
+  padding: 20px;
   box-shadow: rgba(0, 0, 0, 1) 0px -20px 80px 10px inset,
     rgba(0, 0, 0, 0.4) 0px -50px 50px 0px inset;
   background-image: url(${({ photo }) => photo});
-  background-position: center;
-  background-size: cover;
   color: white;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media ${devices.tablet} {
+    background-position: center;
+    padding: 25px 50px;
+  }
+  @media ${devices.desktop} {
+    width: 1124px;
+  }
 `;
 
 // Welcome Section
@@ -41,10 +51,30 @@ export const StyledTitle = styled.div`
 
 export const StyledMovieInfoContainer = styled.div`
   display: flex;
-  width: 1024px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   box-sizing: border-box;
-  padding: 40px 0px;
+  padding: 20px;
+  gap: 40px;
+  @media ${devices.tablet} {
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+  @media ${devices.desktop} {
+    width: 1024px;
+    padding: 40px 0px;
+  }
+`;
+export const StyledMovieInfo = styled.div`
+  display: flex;
+  width: 100%;
   gap: 20px;
+  @media ${devices.desktop} {
+    width: 1024px;
+  }
 `;
 
 // Movie details
@@ -60,7 +90,6 @@ export const StyledMovieDetails = styled.div`
   display: grid;
   grid-template-columns: 80px 1fr;
   grid-template-rows: auto;
-  align-items: flex-end;
   row-gap: 10px;
 `;
 
@@ -76,48 +105,30 @@ export const StyledSectionName = styled.div`
 `;
 
 export const StyledActorsSection = styled.div`
-  width: 1024px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
   padding-top: 25px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-`;
-
-// actors slider
-
-export const StyledSliderContainer = styled.div`
-  width: 1024px;
-  padding: 25px;
-  overflow-x: hidden;
-  position: relative;
-`;
-
-export const StyledSlider = styled.div`
-  display: flex;
-  gap: ${({ gap }) => gap};
-  transition: 1s;
-  transform: ${({ transform }) => "translate(" + (-transform + "px)")};
-`;
-
-export const StyledSliderButton = styled.button`
-  position: absolute;
-  height: 50px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  border: none;
-  background-color: ${({ theme }) => theme.colors.gold};
-  font-size: 120%;
-  right: ${({ right }) => (right ? "-0%" : "")};
-  left: ${({ right }) => (right ? "" : "-0%")};
-  top: 105px;
-  z-index: 1;
-  visibility: ${({ visibility }) => visibility};
-  cursor: pointer;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.darkGold};
+  @media ${devices.desktop} {
+    width: 1024px;
   }
 `;
+
+// actors container
+
+export const StyledActorsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+`;
+
 export const StyledOneActor = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,7 +141,10 @@ export const StyledOneActor = styled.div`
   }
 `;
 export const StyledActorName = styled.div`
-  width: ${({ width }) => `${width}px`};
+  width: 100px;
   box-sizing: border-box;
   padding: 12px;
+  @media ${devices.tablet} {
+    width: 140px;
+  }
 `;

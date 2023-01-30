@@ -1,13 +1,22 @@
 import styled from "styled-components";
+import { devices } from "../../deviceWidth";
 
 export const StyledMovieImg = styled.img`
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+  width: 100px;
+  height: 144px;
+  @media ${devices.tablet} {
+    width: 140px;
+    height: 198px;
+  }
 `;
 
 export const StyledMovieImgLink = styled.img`
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+  width: 100px;
+  height: 144px;
+  @media ${devices.tablet} {
+    width: 140px;
+    height: 198px;
+  }
   cursor: ${({ isLink }) => (isLink ? "pointer" : "")};
   transition: transform 0.5s;
   &:hover {
@@ -16,8 +25,12 @@ export const StyledMovieImgLink = styled.img`
 `;
 
 export const StyledMovieImgContainer = styled.div`
-  width: ${({ cardWidth }) => cardWidth};
-  max-height: ${({ maxHeight }) => maxHeight};
+  width: 100px;
+  max-height: 144px;
+  @media ${devices.tablet} {
+    width: 140px;
+    max-height: 198px;
+  }
   overflow: hidden;
   z-index: 1;
 `;

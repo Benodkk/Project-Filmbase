@@ -5,18 +5,31 @@ import SearchingResult from "./SearchingResult";
 
 import search from "../../../assets/search.png";
 
-import { StyledHeaderInput } from "../../styles/shared/Header/SearchingBar.style";
+import {
+  StyledHeaderInput,
+  StyledSearchImg,
+} from "../../styles/shared/Header/SearchingBar.style";
 
 function SearchingBar() {
-  const [isFocused, setIsFocused] = useState(false);
   const location = useLocation();
+  const [bodyOverflow, setBodyOverflow] = useState("hidden");
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     setIsFocused(false);
   }, [location]);
 
+  useEffect(() => {
+    setBodyOverflow(bodyOverflow === "auto" ? "hidden" : "auto");
+  }, [isFocused]);
+
+  useEffect(() => {
+    document.body.style.overflow = bodyOverflow;
+  }, [bodyOverflow]);
+
   return (
     <div>
+      <StyledSearchImg src={search} onClick={() => setIsFocused(true)} />
       <StyledHeaderInput>
         <img src={search} />
         <input

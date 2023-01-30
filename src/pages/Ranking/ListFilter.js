@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import genres from "../../database/genre";
@@ -18,7 +19,7 @@ const ListFilter = ({ showFilters, kind, sort, genre }) => {
         <StyledFilterDiv
           color={theme.colors.grey}
           selected={genre === "no_filter" ? true : false}
-          fontSize="14px"
+          forList={true}
           onClick={() => {
             navigate(`/ranking/${kind}/${sort}/no_filter/1`);
           }}
@@ -30,7 +31,7 @@ const ListFilter = ({ showFilters, kind, sort, genre }) => {
             <StyledFilterDiv
               key={oneGenre}
               selected={oneGenre === genre ? true : false}
-              fontSize="14px"
+              forList={true}
               onClick={() => {
                 navigate(`/ranking/${kind}/${sort}/${oneGenre}/1`);
               }}

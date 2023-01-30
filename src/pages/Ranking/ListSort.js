@@ -1,8 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import arrowDown from "../../assets/arrow-down.png";
-import { sortList } from "./dataRanking";
+import { sortList } from "../../database/dataRanking";
 
 import {
   StyledSortElement,

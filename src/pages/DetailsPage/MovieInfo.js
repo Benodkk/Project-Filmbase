@@ -1,13 +1,21 @@
+import React from "react";
+
 import InteractionCard from "../../components/InteractionCard";
 import MovieImg from "../../components/MovieCard/MovieImg";
-import { StyledMovieInfoContainer } from "../../components/styles/shared/DetailsPage/DetailsPage.style";
 import MovieDetails from "./MovieDetails";
+
+import {
+  StyledMovieInfo,
+  StyledMovieInfoContainer,
+} from "../../components/styles/shared/DetailsPage/DetailsPage.style";
 
 const MovieInfo = ({ movie }) => {
   return (
     <StyledMovieInfoContainer>
-      <MovieImg movie={movie} cardWidth={200} />
-      <MovieDetails movie={movie} />
+      <StyledMovieInfo>
+        <MovieImg movie={movie} />
+        <MovieDetails movie={movie} />
+      </StyledMovieInfo>
       <InteractionCard movie={movie} gap="20px" />
     </StyledMovieInfoContainer>
   );

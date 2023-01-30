@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import MovieImgLinkTrigger from "./MovieImgLinkTrigger";
 import HiddenCard from "./HiddenCard";
 
 import { StyledBlackScreen } from "../styles/shared/MovieCard/HiddenCard.style";
 
-const MovieCard = ({ movie, cardWidth }) => {
+const MovieCard = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -16,10 +16,9 @@ const MovieCard = ({ movie, cardWidth }) => {
           setIsHovered(false);
         }}
       />
-      <HiddenCard movie={movie} cardWidth={cardWidth} isHovered={isHovered} />
+      <HiddenCard movie={movie} isHovered={isHovered} />
       <MovieImgLinkTrigger
         movie={movie}
-        cardWidth={cardWidth}
         setIsHovered={setIsHovered}
         isLink={true}
       />

@@ -1,7 +1,22 @@
-import genres from "./genre";
-
 let faker = require("faker");
 let casual = require("casual");
+
+let genres = [
+  "Action",
+  "Adventure",
+  "Animation",
+  "Biography",
+  "Comedy",
+  "Crime",
+  "Drama",
+  "Family",
+  "Horror",
+  "Musical",
+  "Sci-Fi",
+  "Sport",
+  "Thiller",
+  "War",
+];
 
 let database = {
   movies: [],
@@ -61,7 +76,7 @@ for (let i = 1; i <= 600; i++) {
 for (let i = 1; i <= 1000; i++) {
   let word = faker.random.words(2);
   let randomActors = [];
-  let actors = Math.floor(Math.random() * 10) + 1;
+  let actors = 6;
   while (randomActors.length < actors) {
     let r = Math.floor(Math.random() * 600);
     if (randomActors.indexOf(r) === -1) randomActors.push(r);
@@ -88,7 +103,7 @@ for (let i = 1; i <= 1000; i++) {
 for (let i = 1; i <= 1000; i++) {
   let word = faker.random.words(2);
   let randomActors = [];
-  let actors = Math.floor(Math.random() * 10) + 1;
+  let actors = 6;
   while (randomActors.length < actors) {
     let r = Math.floor(Math.random() * 600);
     if (randomActors.indexOf(r) === -1) randomActors.push(r);

@@ -1,29 +1,24 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 import InteractionCard from "../InteractionCard";
 import TitleWithYear from "../TitleWithYear";
 import MovieImgLinkTrigger from "./MovieImgLinkTrigger";
 
+import { reactDevice } from "../styles/deviceWidth";
+import { useMediaQuery } from "react-responsive";
 import {
   StyledHiddenCard,
   StyledHiddenCardInfo,
 } from "../styles/shared/MovieCard/HiddenCard.style";
 
-const HiddenCard = ({ movie, cardWidth, isHovered }) => {
-  const [left, setLeft] = useState(false);
-
+const HiddenCard = ({ movie, isHovered }) => {
   const ele2 = useRef(null);
-  const windowWidth = window.innerWidth;
-
-  useEffect(() => {
-    const ele2Rect = ele2.current.getBoundingClientRect();
-    setLeft(windowWidth < ele2Rect.right + ele2.current.offsetWidth + 90);
-  }, [windowWidth, isHovered]);
+  const isTablet = useMediaQuery(reactDevice.tablet);
 
   return (
     <StyledHiddenCard isHovered={isHovered}>
-      <MovieImgLinkTrigger movie={movie} cardWidth={cardWidth} isLink={false} />
-      <StyledHiddenCardInfo isHovered={isHovered} left={left} ref={ele2}>
+      {isTablet ? <MovieImgLinkTrigger movie={movie} isLink={false} /> : <></>}
+      <StyledHiddenCardInfo isHovered={isHovered} ref={ele2}>
         <TitleWithYear movie={movie} />
         <InteractionCard movie={movie} gap="20px" />
       </StyledHiddenCardInfo>
