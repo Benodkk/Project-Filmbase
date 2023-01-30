@@ -1,6 +1,6 @@
 # Filmbase Project
 
-Project available on
+Project available on: https://benodkk.github.io/Project-Filmbase/
 
 ## Run project locally
 
