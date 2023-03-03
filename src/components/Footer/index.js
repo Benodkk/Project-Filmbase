@@ -1,9 +1,6 @@
 import React from "react";
 
-import {
-  StyledFooterContainer,
-  StyledFooterLink,
-} from "../styles/shared/Footer/Footer.style";
+import { StyledFooterContainer, StyledFooterLink } from "./Footer.style";
 
 const Footer = () => {
   return (

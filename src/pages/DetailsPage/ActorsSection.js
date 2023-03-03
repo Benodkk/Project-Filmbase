@@ -1,8 +1,7 @@
 import React from "react";
 
-import db from "../../database/db.json";
-
-import MovieImg from "../../components/MovieCard/MovieImg";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../API/config";
+import poster from "../../assets/poster.png";
 
 import {
   StyledActorsContainer,
@@ -10,23 +9,27 @@ import {
   StyledSectionName,
   StyledOneActor,
   StyledActorName,
-} from "../../components/styles/shared/DetailsPage/DetailsPage.style";
+  StyledActorImage,
+  StyledCharacterName,
+} from "./DetailsPage.style";
 
-const ActorsSection = ({ movie }) => {
-  const actors = [];
-  movie.actors.map((actorId) => {
-    actors.push(db.actors.find((actor) => actor.id === actorId));
-  });
-
+const ActorsSection = ({ credits }) => {
   return (
     <StyledActorsSection>
       <StyledSectionName>ACTORS</StyledSectionName>
-      <StyledActorsContainer>
-        {actors.map((actor) => {
+      <StyledActorsContainer full={credits.cast.length >= 6}>
+        {credits.cast.slice(0, 6).map((actor) => {
           return (
             <StyledOneActor key={actor.id}>
-              <MovieImg movie={actor} />
+              <StyledActorImage
+                src={
+                  actor.profile_path
+                    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                    : poster
+                }
+              />
               <StyledActorName>{actor.name}</StyledActorName>
+              <StyledCharacterName>{actor.character}</StyledCharacterName>
             </StyledOneActor>
           );
         })}

@@ -10,9 +10,9 @@ import starYellow from "../../assets/star-yellow.png";
 import starGold from "../../assets/star-gold.png";
 import starGoldEmpty from "../../assets/star-gold-empty.png";
 import starGrey from "../../assets/star-grey.png";
-import { StyledActionImage } from "../styles/shared/Image.style";
+import { StyledLikeImage } from "./InteractionCard.style";
 
-const RateStars = ({ movie, ratedMovie, starHover, setStarHover }) => {
+const RateStars = ({ movie, ratedMovie, starHover, setStarHover, isMovie }) => {
   const dispatch = useDispatch();
 
   const starSrc = (rating) => {
@@ -41,14 +41,14 @@ const RateStars = ({ movie, ratedMovie, starHover, setStarHover }) => {
   return (
     <div>
       {ratesDescription.map((rating) => (
-        <StyledActionImage
+        <StyledLikeImage
           width="10%"
           key={rating.value}
           alt="star"
           src={starSrc(rating.value)}
           onMouseEnter={() => setStarHover(rating.value)}
           onMouseLeave={() => setStarHover(false)}
-          onClick={() => dispatch(rateMovie(movie.id, rating.value))}
+          onClick={() => dispatch(rateMovie(movie.id, isMovie, rating.value))}
         />
       ))}
     </div>

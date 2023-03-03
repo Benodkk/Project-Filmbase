@@ -16,9 +16,9 @@ const RouteSwitch = () => {
       <Routes>
         <Route
           path="/"
-          element={<Navigate to="/ranking/movies/rate_down/no_filter/1" />}
+          element={<Navigate to="/ranking/movie/rate_down/no_filter/1" />}
         />
-        <Route path="/:kind" element={<DetailsPage />} />
+        <Route path="/:kind/:movie" element={<DetailsPage />} />
         <Route
           path="/ranking/:kind/:sort/:genre/:page_nr"
           element={<Ranking />}

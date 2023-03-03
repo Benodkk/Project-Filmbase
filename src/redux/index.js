@@ -7,23 +7,26 @@ const initialState = {
   movies: [],
 };
 
-function like(id) {
+function like(id, payload) {
   return {
     type: "likeMovie",
+    payload: payload,
     id: id,
   };
 }
 
-function addToWatchList(id) {
+function addToWatchList(id, payload) {
   return {
     type: "addToWatchlist",
+    payload: payload,
     id: id,
   };
 }
 
-function rateMovie(id, rate) {
+function rateMovie(id, payload, rate) {
   return {
     type: "rateMovie",
+    payload: payload,
     id: id,
     rate: rate,
   };
@@ -36,6 +39,7 @@ function userReducer(state = initialState, action) {
     movieIndex === -1
       ? {
           id: action.id,
+          isMovie: action.payload,
           like: false,
           toWatch: false,
           rate: null,
@@ -85,5 +89,9 @@ const store = configureStore({
 });
 
 const persistor = persistStore(store);
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 export { store, persistor };

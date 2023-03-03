@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import genres from "../../database/genre";
-
 import { useTheme } from "styled-components";
 import {
   StyledFilterDiv,
   StyledFilterContainer,
   StyledFilterList,
-} from "../../components/styles/shared/Ranking/Ranking.style";
+} from "./Ranking.style";
 
-const ListFilter = ({ showFilters, kind, sort, genre }) => {
+const ListFilter = ({ showFilters, kind, sort, genre, genres }) => {
   const navigate = useNavigate();
   const theme = useTheme();
+
   return (
     <StyledFilterContainer show={showFilters}>
       <StyledFilterList>
@@ -26,20 +25,24 @@ const ListFilter = ({ showFilters, kind, sort, genre }) => {
         >
           No filter
         </StyledFilterDiv>
-        {genres.map((oneGenre) => {
-          return (
-            <StyledFilterDiv
-              key={oneGenre}
-              selected={oneGenre === genre ? true : false}
-              forList={true}
-              onClick={() => {
-                navigate(`/ranking/${kind}/${sort}/${oneGenre}/1`);
-              }}
-            >
-              {oneGenre}
-            </StyledFilterDiv>
-          );
-        })}
+        {genres.length > 0 ? (
+          genres.map((oneGenre) => {
+            return (
+              <StyledFilterDiv
+                key={oneGenre.id}
+                selected={oneGenre.id === Number(genre) ? true : false}
+                forList={true}
+                onClick={() => {
+                  navigate(`/ranking/${kind}/${sort}/${oneGenre.id}/1`);
+                }}
+              >
+                {oneGenre.name}
+              </StyledFilterDiv>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </StyledFilterList>
     </StyledFilterContainer>
   );

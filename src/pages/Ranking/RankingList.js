@@ -1,11 +1,10 @@
 import React from "react";
 
-import MovieCard from "../../components/MovieCard";
+import MovieCardRate from "../../components/MovieCardRate";
 import StarRating from "../../components/StarRating";
 import TitleWithYear from "../../components/TitleWithYear";
 
-import { useTheme } from "styled-components";
-import { reactDevice } from "../../components/styles/deviceWidth";
+import { reactDevice } from "../../styles/deviceWidth";
 import { useMediaQuery } from "react-responsive";
 import {
   StyledRankingList,
@@ -14,12 +13,13 @@ import {
   StyledRankingCard,
   StyledRankingCardContainer,
   StyledGenre,
-} from "../../components/styles/shared/Ranking/Ranking.style";
-import { StyledDiv } from "../../components/styles/shared/Div.style";
+  StyledGenreLabel,
+} from "./Ranking.style";
 
-const RankingList = ({ displayData, page_nr }) => {
-  const theme = useTheme();
+const RankingList = ({ displayData, page_nr, genres, kind }) => {
   const isTablet = useMediaQuery(reactDevice.tablet);
+
+  const isMovie = kind === "movie";
 
   return (
     <StyledRankingList>
@@ -27,15 +27,24 @@ const RankingList = ({ displayData, page_nr }) => {
         return (
           <StyledRankingCardContainer key={element.id}>
             <StyledIndexNr>
-              {(page_nr - 1) * 50 + displayData.indexOf(element) + 1}
+              {(page_nr - 1) * 20 + displayData.indexOf(element) + 1}
             </StyledIndexNr>
-            <MovieCard movie={element} />
+            <MovieCardRate movie={element} isMovie={isMovie} />
             <StyledRankingCard>
               <StyledLeftSide>
-                <TitleWithYear isColumn={!isTablet} movie={element} />
+                <TitleWithYear
+                  isColumn={!isTablet}
+                  movie={element}
+                  isMovie={isMovie}
+                />
                 <StyledGenre>
-                  <StyledDiv color={theme.colors.grey}>Genre</StyledDiv>
-                  <StyledDiv>{element.genre}</StyledDiv>
+                  <StyledGenreLabel>Genre</StyledGenreLabel>
+                  <div>
+                    {genres
+                      .filter((item) => element.genre_ids.includes(item.id))
+                      .map((element) => element.name)
+                      .join(", ")}
+                  </div>
                 </StyledGenre>
               </StyledLeftSide>
               <StarRating row={!isTablet} movie={element} />

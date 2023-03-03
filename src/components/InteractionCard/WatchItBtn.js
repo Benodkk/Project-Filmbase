@@ -7,9 +7,9 @@ import eyeBlackEmpty from "../../assets/eye-black-empty.png";
 import eyeGold from "../../assets/eye-gold.png";
 import eyeYellow from "../../assets/eye-yellow.png";
 
-import { StyledWatchItBtn } from "../styles/shared/InteractionCard/InteractionCard.style";
+import { StyledWatchItBtn } from "./InteractionCard.style";
 
-const WatchItBtn = ({ movie, ratedMovie }) => {
+const WatchItBtn = ({ movie, ratedMovie, isMovie }) => {
   const dispatch = useDispatch();
   const [eyeHover, setEyeHover] = useState(false);
 
@@ -24,7 +24,7 @@ const WatchItBtn = ({ movie, ratedMovie }) => {
     <StyledWatchItBtn
       onMouseEnter={() => setEyeHover(true)}
       onMouseLeave={() => setEyeHover(false)}
-      onClick={() => dispatch(addToWatchList(movie.id))}
+      onClick={() => dispatch(addToWatchList(movie.id, isMovie))}
     >
       <div>I will watch it!</div>
       <img alt="eye" src={eyeSrc()} />

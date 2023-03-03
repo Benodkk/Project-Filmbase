@@ -2,22 +2,22 @@ import React from "react";
 
 import starGold from "../../assets/star-gold.png";
 
-import { StyledImage } from "../styles/shared/Image.style";
 import {
   StyledRatingNumber,
+  StyledStar,
   StyledStarRating,
   StyledStarRatingContainer,
-} from "../styles/shared/StarRating/StarRating.style";
+} from "./StarRating.style";
 
 const StarRating = ({ movie, row }) => {
   return (
     <StyledStarRatingContainer row={row}>
       <StyledStarRating>
-        <StyledImage width="40px" src={starGold} />
-        <div>{movie.rating.toFixed(2).toString().replace(".", ",")}</div>
+        <StyledStar src={starGold} />
+        <div>{movie.vote_average.toFixed(2).toString().replace(".", ",")}</div>
       </StyledStarRating>
       <StyledRatingNumber row={row}>
-        <div>{movie.numberOfRatings.toLocaleString("pl-PL")}</div>
+        <div>{movie.vote_count.toLocaleString("pl-PL")}</div>
         <div>ratings</div>
       </StyledRatingNumber>
     </StyledStarRatingContainer>

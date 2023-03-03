@@ -7,8 +7,8 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import RouteSwitch from "./RouteSwitch";
 
-import GlobalStyles from "./components/styles/GlobalStyles";
-import Theme from "./components/styles/Theme";
+import GlobalStyles from "./styles/GlobalStyles";
+import Theme from "./styles/Theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

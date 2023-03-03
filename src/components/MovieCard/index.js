@@ -1,28 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 
-import MovieImgLinkTrigger from "./MovieImgLinkTrigger";
-import HiddenCard from "./HiddenCard";
+import { useNavigate } from "react-router-dom";
 
-import { StyledBlackScreen } from "../styles/shared/MovieCard/HiddenCard.style";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../API/config";
+import poster from "../../assets/poster.png";
 
-const MovieCard = ({ movie }) => {
-  const [isHovered, setIsHovered] = useState(false);
+import { StyledMovieImgLink, StyledMovieImgContainer } from "./MovieCard.style";
+
+const MovieCard = ({ movie, isLink, kind }) => {
+  const navigate = useNavigate();
+
+  const path = movie.poster_path
+    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
+    : poster;
 
   return (
-    <div>
-      <StyledBlackScreen
-        isHovered={isHovered}
-        onMouseEnter={() => {
-          setIsHovered(false);
-        }}
+    <StyledMovieImgContainer>
+      <StyledMovieImgLink
+        alt={movie.title}
+        src={path}
+        isLink={isLink}
+        onClick={() => (isLink ? navigate(`/${kind}/${movie.id}`) : "")}
       />
-      <HiddenCard movie={movie} isHovered={isHovered} />
-      <MovieImgLinkTrigger
-        movie={movie}
-        setIsHovered={setIsHovered}
-        isLink={true}
-      />
-    </div>
+    </StyledMovieImgContainer>
   );
 };
 

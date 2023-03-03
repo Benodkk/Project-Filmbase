@@ -8,7 +8,7 @@ import {
   StyledFilterDiv,
   StyledListType,
   StyledListTypeContainer,
-} from "../../components/styles/shared/Ranking/Ranking.style";
+} from "./Ranking.style";
 
 const ListType = ({ kind, sort, setShowFilters, showFilters }) => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const ListType = ({ kind, sort, setShowFilters, showFilters }) => {
         })}
       </StyledListType>
       <StyledFilterBtn
-        show={kind === "movies" ? true : kind === "tvSeries" ? true : false}
+        show={kind === "movie" ? true : kind === "tv" ? true : false}
         onClick={() => setShowFilters(!showFilters)}
       >
         Filters

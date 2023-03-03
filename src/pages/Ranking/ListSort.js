@@ -14,7 +14,7 @@ import {
   StyledSortList,
   StyledSelectArrow,
   StyledSort,
-} from "../../components/styles/shared/Ranking/Ranking.style";
+} from "./Ranking.style";
 
 const ListSort = ({ kind, sort, genre }) => {
   const navigate = useNavigate();

@@ -8,13 +8,7 @@ To run project locally: npm start
 
 ## Database
 
-Initially, I generated fake database with:
-
--JSON SERVER - https://github.com/typicode/json-server
-
--FAKER - https://github.com/faker-js/faker
-
--CASUAL - https://github.com/boo1ean/casual
+All information for every movie and TV series is fetched from the following source: https://developers.themoviedb.org/
 
 ## Project description
 
@@ -31,6 +25,12 @@ The website also includes a search bar where users can search for movies and TV 
 The list is a paginated page, which contains all movies and TV shows. The list can be filtered and sorted according to available options.
 
 <img src="./images/list.png">
+
+### Add Movie/Tv Series to your list
+
+Users can hover over a gold square with a black star in the top left corner of the movie poster. Upon hovering, a card will appear where the user can rate, favorite, or add the movie or TV show to their "to watch" list.
+
+<img src="./images/rateMovie.png">
 
 ### User profile
 

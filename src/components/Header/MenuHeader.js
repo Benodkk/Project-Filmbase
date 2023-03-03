@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 
 import menu from "../../assets/menu.png";
 
-import { StyledActionImage } from "../styles/shared/Image.style";
 import {
   StyledMenu,
   StyledHeaderElement,
   StyledMenuElement,
   StyledMenuLinkContainer,
-} from "../styles/shared/Header/Header.style";
+  StyledMenuImg,
+} from "./Header.style";
 
 const MenuHeader = () => {
   const location = useLocation();
@@ -30,8 +30,7 @@ const MenuHeader = () => {
   return (
     <StyledMenuElement>
       <StyledHeaderElement>
-        <StyledActionImage
-          width="40px"
+        <StyledMenuImg
           src={menu}
           onClick={() => {
             setShowMenu(true);
@@ -47,8 +46,8 @@ const MenuHeader = () => {
             onMouseLeave={() => setShowMenu(false)}
           >
             <Link to="/user">Profile</Link>
-            <Link to="/ranking/movies/rate_down/no_filter/1">Movies</Link>
-            <Link to="/ranking/tvSeries/rate_down/no_filter/1">TvSeries</Link>
+            <Link to="/ranking/movie/rate_down/no_filter/1">Movies</Link>
+            <Link to="/ranking/tv/rate_down/no_filter/1">TvSeries</Link>
           </StyledMenuLinkContainer>
         </StyledMenu>
       </StyledMenuElement>

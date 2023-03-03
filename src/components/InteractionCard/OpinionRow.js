@@ -12,13 +12,14 @@ import heartYellow from "../../assets/heart-yellow.png";
 
 import {
   StyledOpinionRow,
+  StyledUserImage,
   StyledUserCircle,
   StyledOpinionCircle,
   StyledOpinionsRowContainer,
-} from "../styles/shared/InteractionCard/InteractionCard.style";
-import { StyledActionImage, StyledImage } from "../styles/shared/Image.style";
+  StyledLikeImage,
+} from "./InteractionCard.style";
 
-const OpinionRow = ({ movie, ratedMovie, starHover }) => {
+const OpinionRow = ({ movie, ratedMovie, starHover, isMovie }) => {
   const dispatch = useDispatch();
   const [heartHover, setHeartHover] = useState(false);
 
@@ -45,20 +46,20 @@ const OpinionRow = ({ movie, ratedMovie, starHover }) => {
     <StyledOpinionsRowContainer>
       <StyledOpinionRow>
         <StyledUserCircle>
-          <StyledImage src={userBlack} width="40px" />
+          <StyledUserImage src={userBlack} />
         </StyledUserCircle>
         <StyledOpinionCircle scale={!starHover ? "scale(0)" : "scale(1)"}>
           {starHover !== 0 ? starHover : ""}
         </StyledOpinionCircle>
         <div>{rate()}</div>
       </StyledOpinionRow>
-      <StyledActionImage
+      <StyledLikeImage
         width="10%"
         alt="heart"
         src={heartSrc()}
         onMouseEnter={() => setHeartHover(true)}
         onMouseLeave={() => setHeartHover(false)}
-        onClick={() => dispatch(like(movie.id))}
+        onClick={() => dispatch(like(movie.id, isMovie))}
       />
     </StyledOpinionsRowContainer>
   );

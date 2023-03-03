@@ -6,10 +6,7 @@ import WelcomeUserSection from "./WelcomeUserSection";
 import OneSection from "./OneSection";
 import SectionHeader from "./SectionHeader";
 import NoMoviesInfo from "./NoMoviesInfo";
-
-import db from "../../database/db.json";
-
-import { StyledPageContainer } from "../../components/styles/shared/Container.style";
+import PageContainer from "../../components/PageContainer";
 
 const User = () => {
   useEffect(() => {
@@ -17,104 +14,73 @@ const User = () => {
   }, []);
   const store = useSelector((state) => state);
 
-  const [displayMovies, setDisplayMovies] = useState({
-    rated: [],
-    liked: [],
-    toWatch: [],
-  });
+  const [ratedMovies, setRatedMovies] = useState([]);
+  const [likedMovies, setLikedMovies] = useState([]);
+  const [toWatchMovies, setToWatchMovies] = useState([]);
 
-  const [displaySeries, setDisplaySeries] = useState({
-    rated: [],
-    liked: [],
-    toWatch: [],
-  });
+  const [ratedSeries, setRatedSeries] = useState([]);
+  const [likedSeries, setLikedSeries] = useState([]);
+  const [toWatchSeries, setToWatchSeries] = useState([]);
 
   useEffect(() => {
-    setDisplayMovies({
-      rated: ratedMovies,
-      liked: likedMovies,
-      toWatch: toWatchMovies,
-    });
-    setDisplaySeries({
-      rated: ratedSeries,
-      liked: likedSeries,
-      toWatch: toWatchSeries,
-    });
+    const onlyRatedMovies = [];
+    const onlyLikedMovies = [];
+    const onlyToWatchMovies = [];
+
+    const onlyRatedSeries = [];
+    const onlyLikedSeries = [];
+    const onlyToWatchSeries = [];
+
+    const allData = store.movies.sort((a, b) => b.rate - a.rate);
+
+    for (let i = 0; i < allData.length; i++) {
+      const movie = allData[i];
+      const kind = movie.isMovie ? "movie" : "tv";
+
+      if (kind === "movie") {
+        if (movie.rate !== null) onlyRatedMovies.push(movie);
+        if (movie.like) onlyLikedMovies.push(movie);
+        if (movie.toWatch) onlyToWatchMovies.push(movie);
+      }
+      if (kind === "tv") {
+        if (movie.rate !== null) onlyRatedSeries.push(movie);
+        if (movie.like) onlyLikedSeries.push(movie);
+        if (movie.toWatch) onlyToWatchSeries.push(movie);
+      }
+    }
+    setRatedMovies(onlyRatedMovies);
+    setLikedMovies(onlyLikedMovies);
+    setToWatchMovies(onlyToWatchMovies);
+
+    setRatedSeries(onlyRatedSeries);
+    setLikedSeries(onlyLikedSeries);
+    setToWatchSeries(onlyToWatchSeries);
   }, []);
 
-  const sortList = (list) => {
-    const sortedList = list.sort((a, b) => {
-      const rateA = store.movies.find((item) => item.id === a.id).rate;
-      const rateB = store.movies.find((item) => item.id === b.id).rate;
-      return rateB - rateA;
-    });
-    return sortedList;
-  };
-
-  // user movie list
-
-  const userMovies = db.movies.filter((storageMovie) =>
-    store.movies.map((userMovie) => userMovie.id).includes(storageMovie.id)
-  );
-
-  const ratedMovies = [],
-    likedMovies = [],
-    toWatchMovies = [];
-
-  userMovies.forEach((movie) => {
-    const userMovie = store.movies.find((item) => item.id === movie.id);
-    if (userMovie.rate !== null) ratedMovies.push(movie);
-    if (userMovie.like) likedMovies.push(movie);
-    if (userMovie.toWatch) toWatchMovies.push(movie);
-  });
-
-  sortList(ratedMovies);
-  sortList(likedMovies);
-
-  // user series list
-
-  const userSeries = db.tvSeries.filter((storageSeries) =>
-    store.movies.map((userSeries) => userSeries.id).includes(storageSeries.id)
-  );
-
-  const ratedSeries = [],
-    likedSeries = [],
-    toWatchSeries = [];
-
-  userSeries.forEach((series) => {
-    const userSeries = store.movies.find((item) => item.id === series.id);
-    if (userSeries.rate !== null) ratedSeries.push(series);
-    if (userSeries.like) likedSeries.push(series);
-    if (userSeries.toWatch) toWatchSeries.push(series);
-  });
-
-  sortList(ratedSeries);
-  sortList(likedSeries);
-
   return (
-    <StyledPageContainer>
+    <PageContainer>
       <WelcomeUserSection />
       <SectionHeader
         title="MOVIES"
-        rated={displayMovies.rated}
-        toWatch={displayMovies.toWatch}
-        favourite={displayMovies.liked}
+        rated={ratedMovies}
+        toWatch={toWatchMovies}
+        favourite={likedMovies}
       />
-      {userMovies.length ? (
+      {ratedMovies.concat(likedMovies).concat(toWatchMovies).length ? (
         <>
           <OneSection
             title="RATED MOVIES"
-            list={displayMovies.rated}
+            list={ratedMovies}
             btnLink="rated_movies"
           />
           <OneSection
             title="LIKED MOVIES"
-            list={displayMovies.liked}
+            list={likedMovies}
             btnLink="liked_movies"
           />
           <OneSection
             title="TO WATCH MOVIES"
-            list={displayMovies.toWatch}
+            list={toWatchMovies}
             btnLink="to_watch_movies"
           />
         </>
@@ -123,32 +89,32 @@ const User = () => {
       )}
       <SectionHeader
         title="TV SERIES"
-        rated={displaySeries.rated}
-        toWatch={displaySeries.toWatch}
-        favourite={displaySeries.liked}
+        rated={ratedSeries}
+        toWatch={toWatchSeries}
+        favourite={likedSeries}
       />
-      {userSeries.length ? (
+      {ratedSeries.concat(likedSeries).concat(toWatchSeries).length ? (
         <>
           <OneSection
             title="RATED TV SERIES"
-            list={displaySeries.rated}
+            list={ratedSeries}
             btnLink="rated_series"
           />
           <OneSection
             title="LIKED TV SERIES"
-            list={displaySeries.liked}
+            list={likedSeries}
             btnLink="liked_series"
           />
           <OneSection
             title="TO WATCH TV SERIES"
-            list={displaySeries.toWatch}
+            list={toWatchSeries}
             btnLink="to_watch_series"
           />
         </>
       ) : (
         <NoMoviesInfo kind="tvSeries" />
       )}
-    </StyledPageContainer>
+    </PageContainer>
   );
 };
 

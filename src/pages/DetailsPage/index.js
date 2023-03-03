@@ -1,31 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import db from "../../database/db.json";
+import { API_URL, API_KEY } from "../../API/config";
 
 import MovieInfo from "./MovieInfo";
 import ActorsSection from "./ActorsSection";
 import WelcomeMovieSection from "./WelcomeMovieSection";
-
-import { StyledPageContainer } from "../../components/styles/shared/Container.style";
+import PageContainer from "../../components/PageContainer";
 
 const DetailsPage = () => {
+  const { kind, movie } = useParams();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { kind } = useParams();
+  const [display, setDisplay] = useState();
+  const [credits, setCredits] = useState();
 
-  const movie = db.movies
-    .concat(db.tvSeries)
-    .find((element) => element.id === kind);
+  useEffect(() => {
+    const abortController = new AbortController();
+    console.log(movie);
+    const requestOne = fetch(
+      `${API_URL}/${kind}/${movie}?api_key=${API_KEY}`
+    ).then((response) => response.json());
+    const requestTwo = fetch(
+      `${API_URL}/${kind}/${movie}/credits?api_key=${API_KEY}`
+    ).then((response) => response.json());
+    Promise.all([requestOne, requestTwo])
+      .then((data) => {
+        setDisplay(data[0]);
+        setCredits(data[1]);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    return () => {
+      abortController.abort();
+    };
+  }, [movie]);
 
-  return (
-    <StyledPageContainer>
-      <WelcomeMovieSection movie={movie} />
-      <MovieInfo movie={movie} />
-      <ActorsSection movie={movie} />
-    </StyledPageContainer>
+  return display ? (
+    <PageContainer>
+      <WelcomeMovieSection display={display} kind={kind} />
+      <MovieInfo display={display} credits={credits} kind={kind} />
+      <ActorsSection credits={credits} />
+    </PageContainer>
+  ) : (
+    <></>
   );
 };
 export default DetailsPage;

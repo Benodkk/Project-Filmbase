@@ -1,19 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import {
-  StyledButton,
-  StyledButtonsContainer,
-} from "../../components/styles/shared/Ranking/Ranking.style";
+import { StyledButton, StyledButtonsContainer } from "./Ranking.style";
 
-const SwitchPage = ({ data, switchPageUrl, page_nr, elementPerPage }) => {
+const SwitchPage = ({ pages, switchPageUrl, page_nr }) => {
   const navigate = useNavigate();
-
-  let totalPages = data.length / elementPerPage;
 
   const createButtons = () => {
     let buttons = [];
-    for (let i = 0; i < totalPages; i++) {
+    for (let i = 0; i < pages; i++) {
       if (i + 1 > Number(page_nr) - 3 && i + 1 < Number(page_nr) + 3) {
         buttons.push(
           <StyledButton
@@ -30,7 +25,7 @@ const SwitchPage = ({ data, switchPageUrl, page_nr, elementPerPage }) => {
   };
 
   return (
-    <StyledButtonsContainer show={totalPages > 1}>
+    <StyledButtonsContainer show={pages > 1}>
       <StyledButton
         onClick={() =>
           page_nr > 1 ? navigate(`${switchPageUrl}/${Number(page_nr) - 1}`) : ""
@@ -41,7 +36,7 @@ const SwitchPage = ({ data, switchPageUrl, page_nr, elementPerPage }) => {
       {createButtons()}
       <StyledButton
         onClick={() =>
-          page_nr < totalPages
+          page_nr < pages
             ? navigate(`${switchPageUrl}/${Number(page_nr) + 1}`)
             : ""
         }

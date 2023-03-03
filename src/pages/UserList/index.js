@@ -5,28 +5,30 @@ import { useSelector } from "react-redux";
 
 import List from "./List";
 import SwitchPage from "../Ranking/SwitchPage";
+import PageContainer from "../../components/PageContainer";
 
-import db from "../../database/db.json";
+import { API_KEY, API_URL } from "../../API/config";
 import moviePhoto from "../../assets/movie.jpg";
 
 import {
+  StyledListContainer,
   StyledListHeaderContainer,
-  StyledPageContainer,
-} from "../../components/styles/shared/Container.style";
-import { StyledWelcomePhoto } from "../../components/styles/shared/WelcomePhoto.style";
-import { StyledListContainer } from "../../components/styles/shared/UserList/UserList.style";
-import { StyledSelectionTitle } from "../../components/styles/shared/SelectionTitle.style";
+  StyledListTitle,
+} from "./UserList.style";
+import WelcomeBGImage from "../../components/WelcomeBGImage";
 
 const UserList = () => {
   const { kind, page_nr } = useParams();
+  const store = useSelector((state) => state);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const store = useSelector((state) => state);
-
   const [data, setData] = useState([]);
+  const [pages, setPages] = useState([]);
+
+  // const [loading, setLoading] = useState("");
 
   const urlVaraibles = {
     rated_movies: "RATED MOVIES",
@@ -37,52 +39,64 @@ const UserList = () => {
     to_watch_series: "TO WATCH TV SERIES",
   };
 
-  let list;
-  if (kind.includes("movies")) {
-    list = db.movies;
-  } else if (kind.includes("series")) {
-    list = db.tvSeries;
-  }
+  const isMovie = kind.includes("movies");
+  const type = kind.includes("movies") ? "movie" : "tv";
+  const listType = kind.includes("rated")
+    ? "rate"
+    : kind.includes("like")
+    ? "like"
+    : kind.includes("to_watch")
+    ? "toWatch"
+    : "";
 
   useEffect(() => {
-    const specificList = list
-      .filter((storageMovie) =>
-        store.movies.map((userMovie) => userMovie.id).includes(storageMovie.id)
-      )
-      .filter((movie) => {
-        const userMovie = store.movies.find((item) => item.id === movie.id);
-        if (kind.includes("rated")) {
-          return userMovie.rate !== null;
-        } else if (kind.includes("liked")) {
-          return userMovie.like;
-        } else if (kind.includes("to_watch")) {
-          return userMovie.toWatch;
+    const movies = [];
+
+    const fetchedData = [];
+
+    const fetchData = async () => {
+      // setLoading(true);
+      for (let i = 0; i < store.movies.length; i++) {
+        if (
+          store.movies[i][listType] !== null &&
+          store.movies[i][listType] !== false &&
+          store.movies[i].isMovie === isMovie
+        )
+          movies.push(store.movies[i]);
+      }
+      for (let i = page_nr * 20 - 20; i < page_nr * 20; i++) {
+        try {
+          const response = await fetch(
+            `${API_URL}/${type}/${movies[i].id}?api_key=${API_KEY}`
+          );
+          const fetchedMovie = await response.json();
+          fetchedData.push(fetchedMovie);
+        } catch (err) {
+          console.log(err.message);
         }
-      })
-      .sort((a, b) => {
-        const rateA = store.movies.find((item) => item.id === a.id).rate;
-        const rateB = store.movies.find((item) => item.id === b.id).rate;
-        return rateB - rateA;
-      });
-    setData(specificList);
+      }
+      setData(fetchedData);
+      setPages(Math.ceil(movies.length / 20));
+      // setLoading(false);
+    };
+    fetchData();
   }, [page_nr]);
 
   return (
-    <StyledPageContainer>
-      <StyledWelcomePhoto photo={moviePhoto} />
+    <PageContainer>
+      <WelcomeBGImage img={moviePhoto} />
       <StyledListContainer>
         <StyledListHeaderContainer>
-          <StyledSelectionTitle>{urlVaraibles[kind]}</StyledSelectionTitle>
+          <StyledListTitle>{urlVaraibles[kind]}</StyledListTitle>
         </StyledListHeaderContainer>
-        <List list={data.slice(20 * page_nr - 20, 20 * page_nr)} />
+        <List list={data} isMovie={isMovie} />
         <SwitchPage
-          data={data}
+          pages={pages}
           switchPageUrl={`/user/list/${kind}`}
           page_nr={page_nr}
-          elementPerPage={20}
         />
       </StyledListContainer>
-    </StyledPageContainer>
+    </PageContainer>
   );
 };
 

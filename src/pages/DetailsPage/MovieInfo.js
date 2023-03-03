@@ -1,22 +1,26 @@
 import React from "react";
 
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../API/config";
+
 import InteractionCard from "../../components/InteractionCard";
-import MovieImg from "../../components/MovieCard/MovieImg";
 import MovieDetails from "./MovieDetails";
 
 import {
   StyledMovieInfo,
   StyledMovieInfoContainer,
-} from "../../components/styles/shared/DetailsPage/DetailsPage.style";
+  StyledMoviePoster,
+} from "./DetailsPage.style";
 
-const MovieInfo = ({ movie }) => {
+const MovieInfo = ({ display, credits, kind }) => {
+  const path = `${IMAGE_BASE_URL}${POSTER_SIZE}${display.poster_path}`;
   return (
     <StyledMovieInfoContainer>
       <StyledMovieInfo>
-        <MovieImg movie={movie} />
-        <MovieDetails movie={movie} />
+        <StyledMoviePoster src={path} />
+        <div>{display.overview}</div>
+        <MovieDetails display={display} credits={credits} kind={kind} />
       </StyledMovieInfo>
-      <InteractionCard movie={movie} gap="20px" />
+      <InteractionCard movie={display} isMovie={kind === "movie"} gap="20px" />
     </StyledMovieInfoContainer>
   );
 };

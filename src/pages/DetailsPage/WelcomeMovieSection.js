@@ -2,29 +2,32 @@ import React from "react";
 
 import StarRating from "../../components/StarRating";
 
-import moviePage from "../../assets/movie-page.jpg";
+import { IMAGE_BASE_URL, POSTER_SIZE } from "../../API/config";
+import moviePoster from "../../assets/movie-page.jpg";
 
 import {
   StyledTitle,
   StyledType,
   StyledWelcomeMovieContainer,
   StyledWelcomeMovieSection,
-} from "../../components/styles/shared/DetailsPage/DetailsPage.style";
+  StyledWelcomeDetails,
+} from "./DetailsPage.style";
 
-const WelcomeMovieSection = ({ movie }) => {
-  let type;
-  if (movie.id.includes("film")) {
-    type = "MOVIE";
-  } else if (movie.id.includes("series")) {
-    type = "TV SERIES";
-  }
+const WelcomeMovieSection = ({ display, kind }) => {
+  const path = display.backdrop_path
+    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${display.backdrop_path}`
+    : moviePoster;
+
+  const type = kind === "movie" ? "Movie" : kind === "tv" ? "Tv series" : "";
 
   return (
     <StyledWelcomeMovieSection>
-      <StyledWelcomeMovieContainer photo={moviePage}>
-        <StyledType>{type}</StyledType>
-        <StyledTitle>{movie.title}</StyledTitle>
-        <StarRating movie={movie} row={true} />
+      <StyledWelcomeMovieContainer photo={path}>
+        <StyledWelcomeDetails>
+          <StyledType>{type}</StyledType>
+          <StyledTitle>{display.title || display.name}</StyledTitle>
+          <StarRating movie={display} row={true} />
+        </StyledWelcomeDetails>
       </StyledWelcomeMovieContainer>
     </StyledWelcomeMovieSection>
   );

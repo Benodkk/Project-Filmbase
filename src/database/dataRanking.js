@@ -1,48 +1,59 @@
-import db from "./db.json";
-
 export const sortList = [
   {
-    label: "Rating:",
+    label: "Rating",
     values: [
-      { label: "from the biggest", linkValue: "rate_down" },
-      { label: "from the lowest", linkValue: "rate_up" },
+      {
+        label: "from the biggest",
+        linkValue: "rate_down",
+        apiValue: "vote_average.desc",
+      },
+      {
+        label: "from the lowest",
+        linkValue: "rate_up",
+        apiValue: "vote_average.asc",
+      },
     ],
   },
   {
-    label: "Released:",
+    label: "Released",
     values: [
-      { label: "from the latest", linkValue: "date_down" },
-      { label: "from the oldest", linkValue: "date_up" },
+      {
+        label: "from the latest",
+        linkValue: "date_down",
+        apiValue: "release_date.desc",
+      },
+      {
+        label: "from the oldest",
+        linkValue: "date_up",
+        apiValue: "release_date.asc",
+      },
     ],
   },
   {
-    label: "Poplarity:",
+    label: "Poplarity",
     values: [
-      { label: "from the most popular", linkValue: "popularity_down" },
-      { label: "from the least popular", linkValue: "popularity_up" },
+      {
+        label: "from the most popular",
+        linkValue: "popularity_down",
+        apiValue: "popularity.desc",
+      },
+      {
+        label: "from the least popular",
+        linkValue: "popularity_up",
+        apiValue: "popularity.asc",
+      },
     ],
-  },
-];
-
-export const renderData = [
-  {
-    id: "movies",
-    data: db.movies,
-  },
-  {
-    id: "tvSeries",
-    data: db.tvSeries,
   },
 ];
 
 export const databaseType = [
   {
-    type: "movies",
+    type: "movie",
     label: "Movies",
     title: "MOVIES DATABASE",
   },
   {
-    type: "tvSeries",
+    type: "tv",
     label: "Tv series",
     title: "TV SERIES DATABASE",
   },

@@ -1,18 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import MovieCard from "../../components/MovieCard";
+import MovieCardRate from "../../components/MovieCardRate";
 
-import { StyledMovieCardTitle } from "../../components/styles/shared/User/User.style";
+import { StyledMovieCardTitle } from "./User.style";
 
-const MovieCardTitle = ({ movie }) => {
+const MovieCardTitle = ({ movie, isMovie }) => {
   const navigate = useNavigate();
   return (
     <StyledMovieCardTitle>
-      <MovieCard movie={movie} />
-      <div onClick={() => navigate(`/${movie.id}`)}>{movie.title}</div>
+      <MovieCardRate movie={movie} isMovie={isMovie} />
       <div onClick={() => navigate(`/${movie.id}`)}>
-        ({movie.realsed.slice(0, 4)})
+        {movie.title || movie.name}
+      </div>
+      <div onClick={() => navigate(`/${movie.id}`)}>
+        (
+        {movie.release_date
+          ? movie.release_date.slice(0, 4)
+          : movie.first_air_date.slice(0, 4)}
+        )
       </div>
     </StyledMovieCardTitle>
   );

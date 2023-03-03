@@ -1,31 +1,49 @@
 import React from "react";
 
-import db from "../../database/db.json";
+import countries from "iso-3166-1-alpha-2";
 
 import {
   StyledFirstDiv,
   StyledMovieDetails,
   StyledMovieDetailsContainer,
-} from "../../components/styles/shared/DetailsPage/DetailsPage.style";
+} from "./DetailsPage.style";
 
-const MovieDetails = ({ movie }) => {
-  const director = db.directors.find(
-    (director) => director.id === movie.director
-  );
-  const writer = db.writers.find((writer) => writer.id === movie.writer);
+const MovieDetails = ({ display, credits, kind }) => {
+  const director = credits.crew.filter((people) => people.job === "Director");
+  const writer = credits.crew.filter((people) => people.job === "Screenplay");
   return (
     <StyledMovieDetailsContainer>
-      <div>{movie.description}</div>
-      <StyledMovieDetails>
-        <StyledFirstDiv>Director</StyledFirstDiv>
-        <div>{director.name}</div>
-        <StyledFirstDiv>Writer</StyledFirstDiv>
-        <div>{writer.name}</div>
-        <StyledFirstDiv>Genre</StyledFirstDiv>
-        <div>{movie.genre}</div>
-        <StyledFirstDiv>Released:</StyledFirstDiv>
-        <div>{movie.realsed.slice(0, 10)}</div>
-      </StyledMovieDetails>
+      {kind === "movie" ? (
+        <StyledMovieDetails>
+          <StyledFirstDiv>Director</StyledFirstDiv>
+          <div>{director.map((element) => element.name).join(", ")}</div>
+          <StyledFirstDiv>Writer</StyledFirstDiv>
+          <div>{writer.map((element) => element.name).join(", ")}</div>
+          <StyledFirstDiv>Genre</StyledFirstDiv>
+          <div>{display.genres.map((element) => element.name).join(", ")}</div>
+          <StyledFirstDiv>Released:</StyledFirstDiv>
+          <div>{display.release_date}</div>
+        </StyledMovieDetails>
+      ) : kind === "tv" ? (
+        <StyledMovieDetails>
+          <StyledFirstDiv>Production</StyledFirstDiv>
+          <div>
+            {display.origin_country ? (
+              display.origin_country
+                .map((element) => countries.getCountry(element))
+                .join(", ")
+            ) : (
+              <></>
+            )}
+          </div>
+          <StyledFirstDiv>Genre</StyledFirstDiv>
+          <div>{display.genres.map((element) => element.name).join(", ")}</div>
+          <StyledFirstDiv>Premiere:</StyledFirstDiv>
+          <div>{display.first_air_date}</div>
+        </StyledMovieDetails>
+      ) : (
+        <></>
+      )}
     </StyledMovieDetailsContainer>
   );
 };

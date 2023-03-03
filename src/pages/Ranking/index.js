@@ -5,13 +5,14 @@ import ListHeader from "./ListHeader";
 import RankingList from "./RankingList";
 import ListSort from "./ListSort";
 import SwitchPage from "./SwitchPage";
+import PageContainer from "../../components/PageContainer";
 
-import { renderData } from "../../database/dataRanking";
+import { API_URL, API_KEY } from "../../API/config";
+import { sortList } from "../../database/dataRanking";
 import moviePhoto from "../../assets/movie.jpg";
 
-import { StyledListContainer } from "../../components/styles/shared/Ranking/Ranking.style";
-import { StyledPageContainer } from "../../components/styles/shared/Container.style";
-import { StyledWelcomePhoto } from "../../components/styles/shared/WelcomePhoto.style";
+import { StyledListContainer } from "./Ranking.style";
+import WelcomeBGImage from "../../components/WelcomeBGImage";
 
 const Ranking = () => {
   const { kind, sort, genre, page_nr } = useParams();
@@ -21,48 +22,58 @@ const Ranking = () => {
   }, [kind]);
 
   const [displayData, setDisplayData] = useState([]);
-
-  let data = renderData.find((element) => element.id === kind).data;
-
-  // sort data
-  if (sort === "rate_down") {
-    data.sort((a, b) => (a.rating < b.rating ? 1 : -1));
-  } else if (sort === "rate_up") {
-    data.sort((a, b) => (a.rating > b.rating ? 1 : -1));
-  } else if (sort === "date_down") {
-    data.sort((a, b) => (a.realsed < b.realsed ? 1 : -1));
-  } else if (sort === "date_up") {
-    data.sort((a, b) => (a.realsed > b.realsed ? 1 : -1));
-  } else if (sort === "popularity_down") {
-    data.sort((a, b) => (a.numberOfRatings < b.numberOfRatings ? 1 : -1));
-  } else if (sort === "popularity_up") {
-    data.sort((a, b) => (a.numberOfRatings > b.numberOfRatings ? 1 : -1));
-  }
-
-  // filter data
-  if (genre !== "no_filter") {
-    data = data.filter((element) => element.genre === genre);
-  }
+  const [pages, setPages] = useState(0);
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
-    setDisplayData(data.slice(50 * page_nr - 50, 50 * page_nr));
+    const abortController = new AbortController();
+    const apiSort = sortList
+      .map((item) => item.values)
+      .flat()
+      .find((value) => value.linkValue === sort).apiValue;
+
+    const requestOne = fetch(
+      `${API_URL}discover/${kind}?api_key=${API_KEY}&sort_by=${apiSort}&page=${page_nr}&with_genres=${genre}&vote_count.gte=500`
+    ).then((response) => response.json());
+
+    const requestTwo = fetch(
+      `${API_URL}/genre/${kind}/list?api_key=${API_KEY}`
+    ).then((response) => response.json());
+
+    Promise.all([requestOne, requestTwo])
+      .then((data) => {
+        console.log(data);
+        setDisplayData(data[0].results);
+        setPages(data[0].total_pages);
+        setGenres(data[1].genres);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    return () => {
+      abortController.abort();
+    };
   }, [kind, sort, genre, page_nr]);
 
   return (
-    <StyledPageContainer>
-      <StyledWelcomePhoto photo={moviePhoto} />
+    <PageContainer>
+      <WelcomeBGImage img={moviePhoto} />
       <StyledListContainer>
-        <ListHeader kind={kind} sort={sort} genre={genre} />
+        <ListHeader kind={kind} sort={sort} genre={genre} genres={genres} />
         <ListSort kind={kind} sort={sort} genre={genre} />
-        <RankingList displayData={displayData} page_nr={page_nr} />
+        <RankingList
+          displayData={displayData}
+          page_nr={page_nr}
+          genres={genres}
+          kind={kind}
+        />
         <SwitchPage
-          data={data}
+          pages={pages}
           switchPageUrl={`/ranking/${kind}/${sort}/${genre}`}
           page_nr={page_nr}
-          elementPerPage={50}
         />
       </StyledListContainer>
-    </StyledPageContainer>
+    </PageContainer>
   );
 };
 export default Ranking;

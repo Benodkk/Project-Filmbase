@@ -6,9 +6,9 @@ import OpinionRow from "./OpinionRow";
 import RateStars from "./RateStars";
 import WatchItBtn from "./WatchItBtn";
 
-import { StyledInteractionCard } from "../styles/shared/InteractionCard/InteractionCard.style";
+import { StyledInteractionCard } from "./InteractionCard.style";
 
-const InteractionCard = ({ movie, gap }) => {
+const InteractionCard = ({ movie, gap, isMovie }) => {
   const store = useSelector((state) => state);
 
   const [starHover, setStarHover] = useState(false);
@@ -18,14 +18,20 @@ const InteractionCard = ({ movie, gap }) => {
 
   return (
     <StyledInteractionCard gap={gap}>
-      <OpinionRow movie={movie} ratedMovie={ratedMovie} starHover={starHover} />
+      <OpinionRow
+        movie={movie}
+        ratedMovie={ratedMovie}
+        starHover={starHover}
+        isMovie={isMovie}
+      />
       <RateStars
         movie={movie}
         ratedMovie={ratedMovie}
         starHover={starHover}
         setStarHover={setStarHover}
+        isMovie={isMovie}
       />
-      <WatchItBtn movie={movie} ratedMovie={ratedMovie} />
+      <WatchItBtn movie={movie} ratedMovie={ratedMovie} isMovie={isMovie} />
     </StyledInteractionCard>
   );
 };

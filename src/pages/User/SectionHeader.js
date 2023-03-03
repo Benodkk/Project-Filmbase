@@ -4,44 +4,44 @@ import starGold from "../../assets/star-gold.png";
 import eyeGold from "../../assets/eye-gold.png";
 import heartGold from "../../assets/heart-gold.png";
 
-import { useTheme } from "styled-components";
 import {
   StyledCountedList,
+  StyledCountLabel,
+  StyledIcon,
   StyledIconNr,
+  StyledNr,
   StyledOneCount,
   StyledSectionHeader,
   StyledSectionHeaderContainer,
-} from "../../components/styles/shared/User/User.style";
-import { StyledDiv } from "../../components/styles/shared/Div.style";
-import { StyledImage } from "../../components/styles/shared/Image.style";
+  StyledSectionHeaderTitle,
+} from "./User.style";
 
 const SectionHeader = ({ title, rated, toWatch, favourite }) => {
-  const theme = useTheme();
   return (
     <StyledSectionHeaderContainer>
       <StyledSectionHeader>
-        <StyledDiv fontSize="32px">{title}</StyledDiv>
+        <StyledSectionHeaderTitle>{title}</StyledSectionHeaderTitle>
         <StyledCountedList>
           <StyledOneCount>
             <StyledIconNr>
-              <StyledImage src={starGold} width="30px" />
-              <StyledDiv fontSize="24px">{rated.length}</StyledDiv>
+              <StyledIcon src={starGold} />
+              <StyledNr>{rated.length}</StyledNr>
             </StyledIconNr>
-            <StyledDiv color={theme.colors.grey}>ratings</StyledDiv>
+            <StyledCountLabel>ratings</StyledCountLabel>
           </StyledOneCount>
           <StyledOneCount>
             <StyledIconNr>
-              <StyledImage src={eyeGold} width="30px" />
-              <StyledDiv fontSize="24px">{toWatch.length}</StyledDiv>
+              <StyledIcon src={eyeGold} />
+              <StyledNr>{toWatch.length}</StyledNr>
             </StyledIconNr>
-            <StyledDiv color={theme.colors.grey}>to watch</StyledDiv>
+            <StyledCountLabel>to watch</StyledCountLabel>
           </StyledOneCount>
           <StyledOneCount>
             <StyledIconNr>
-              <StyledImage src={heartGold} width="30px" />
-              <StyledDiv fontSize="24px">{favourite.length}</StyledDiv>
+              <StyledIcon src={heartGold} />
+              <StyledNr>{favourite.length}</StyledNr>
             </StyledIconNr>
-            <StyledDiv color={theme.colors.grey}>favourites</StyledDiv>
+            <StyledCountLabel>favourites</StyledCountLabel>
           </StyledOneCount>
         </StyledCountedList>
       </StyledSectionHeader>
