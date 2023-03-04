@@ -20,7 +20,6 @@ const DetailsPage = () => {
 
   useEffect(() => {
     const abortController = new AbortController();
-    console.log(movie);
     const requestOne = fetch(
       `${API_URL}/${kind}/${movie}?api_key=${API_KEY}`
     ).then((response) => response.json());
@@ -31,7 +30,6 @@ const DetailsPage = () => {
       .then((data) => {
         setDisplay(data[0]);
         setCredits(data[1]);
-        console.log(data);
       })
       .catch((err) => {
         console.log(err.message);

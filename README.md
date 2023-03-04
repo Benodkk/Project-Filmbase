@@ -10,6 +10,16 @@ To run project locally: npm start
 
 All information for every movie and TV series is fetched from the following source: https://developers.themoviedb.org/
 
+## Technologies
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React-router](https://img.shields.io/badge/react--router-black?style=for-the-badge&logo=react-router&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+
 ## Project description
 
 The project is based on the Polish website filmweb and includes some of the features found on the site. Users can browse movies and TV shows. Each movie and TV show has its own page with a description. Users can like, rate, or add movies and TV shows to their "to watch" list. On the user's dedicated page, all the movies and TV shows that the user has liked, rated or added to their "to watch" list will be displayed.

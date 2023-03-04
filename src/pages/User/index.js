@@ -85,7 +85,7 @@ const User = () => {
           />
         </>
       ) : (
-        <NoMoviesInfo kind="movies" />
+        <NoMoviesInfo kind="movie" />
       )}
       <SectionHeader
         title="TV SERIES"
@@ -112,7 +112,7 @@ const User = () => {
           />
         </>
       ) : (
-        <NoMoviesInfo kind="tvSeries" />
+        <NoMoviesInfo kind="tv" />
       )}
     </PageContainer>
   );

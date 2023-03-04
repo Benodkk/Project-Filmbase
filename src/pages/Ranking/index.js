@@ -42,7 +42,6 @@ const Ranking = () => {
 
     Promise.all([requestOne, requestTwo])
       .then((data) => {
-        console.log(data);
         setDisplayData(data[0].results);
         setPages(data[0].total_pages);
         setGenres(data[1].genres);
